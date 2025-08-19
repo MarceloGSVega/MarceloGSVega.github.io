@@ -7,6 +7,13 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 
+<style>
+    th, td {
+        border: 1px solid #ddd; /* soft border */
+        padding: 6px;
+    }
+</style>
+
 
 <body class="bg-light">
     <div class="container py-5">
@@ -552,8 +559,297 @@
 
 
             </div>
-            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-            <p>Contact tab content goes here.</p>
+            <div class="tab-pane fade gap-3" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                <h3 class="text-center">Experimento 3 - Array de Alto-falantes</h3>
+                <!-- Introduction -->
+                <section class="mb-5">
+                  <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <h5>Conjunto 1 - Array de Beamforming com Defasagem</h5>
+                            <b>Objetivos:</b>
+                            <ol type="A" class="list-group list-group my-3">
+                              <li class="list-group-item">Testar um Line Phased Array de Alto Falantes, beamforming de delay</li>
+                            </ol>
+                            <b>Materiais:</b>
+                            <ol type="A" class="list-group list-group my-3">
+                                <li class="list-group-item">01 celular com App Spectroid (Android)</li>
+                                <li class="list-group-item">01 interface M-Audio Fast Track ultra, 8 canais</li>
+                                <li class="list-group-item">01 computador com softwares REW, Reaper, Audacity e Tracks Live</li>
+                                <li class="list-group-item">02 amplificadores de áudio de 4 canais, 6W/canal</li>
+                                <li class="list-group-item">01 torre de Array de 8 alto-falantes</li>
+                                <li class="list-group-item">08 cabos com conector P10</li>
+                                <li class="list-group-item">01 fonte de alimentação com dois canais 0-30V, 3A</li>
+                                <li class="list-group-item">Cabos diversos para interface M-Audio e amplificadores</li>
+                                <li class="list-group-item">Apoio de 30 cm de altura para a torre de Array de 8 alto-falantes</li>
+                                <li class="list-group-item">Gabarito transferidor -90° a 90° impresso</li>
+                                <li class="list-group-item">Linha (barbante) de 6m, com marcações em 1,5m, 3,0m e 6,0m</li>
+                                <li class="list-group-item">01 haste de referência para altura das medições (1,10m aprox.)</li>
+                            </ol>
+                        </div>
+
+                        <div class="col">
+                            <h5>Conjunto 2 - Array de Bessel</h5>
+                            <b>Objetivos:</b>
+                            <ol type="A" class="list-group list-group-numbered my-3">
+                              <li class="list-group-item">Testes e gravações em microfones diferentes:</li>
+                            </ol>
+                            <b>Materiais:</b>
+                            <ol type="A" class="list-group list-group my-3">
+                                <li class="list-group-item">01 interface M-Audio Fast Track ultra, 8 canais</li>
+                                <li class="list-group-item">01 computador com softwares REW, Reaper, Audacity e Tracks Live</li>
+                                <li class="list-group-item">01 amplificador de potência de áudio Watson 2200 de 600W</li>
+                                <li class="list-group-item">05 caixas acústicas 8Ω, 50W passivas</li>
+                                <li class="list-group-item">01 base de madeira</li>
+                                <li class="list-group-item">Gabarito transferidor -90°-0°-90° impresso</li>
+                                <li class="list-group-item">01 celular com Spectroid (Android)</li>
+                                <li class="list-group-item">01 metro (5m)</li>
+                            </ol>
+                        </div>
+                      </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col">
+                            <h5>Montagem conjunto 1: Array de Beamforming</h5>
+                            <img src="experimento_3/conj_1.png" class="img-fluid rounded shadow" alt="" style="max-height: 300px;">
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col">
+                            <h5>Calibracao e Medicoes:</h5>
+                            <p> Com o array montado de acordo com a figura acima, foi iniciado o processo de calibracao de cada auto-falante.</p>
+                            <p>Este processo foi realizado com o auxilio do programa Reaper, onde foram silenciados todos os canais para que seja possivel calibra-los um a um.</p>
+                            <p>Foi utilizado o App Spectroid para medir a saida de cada um dos auto-falantes, e seu ganho foi ajustado para -14dBA, com um sinal de 250Hz.</p>
+                            <p>As medidas foram obtidas posicionando o microfone do aparelho celular a 0.75m do centro do Array, variando entre -75 e 75 graus, com intervalos de 15 graus.</p>
+                            <p>Foram utilizados sinais sonoros de 250Hz, 500Hz e 1kHz sem defasagem, e 1kHz e 2kHz com defasagem.</p>
+                            <p>Resultados podem ser visualizados na tabela 1 abaixo:</p>
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <table cellpadding="6" style="border-collapse: collapse; text-align: center;">
+                                <caption><b>Tabela 1. Array na Horizontal, Senóides sem defasagem, medição a d = 0,75 m de distância</b></caption>
+                                <thead style="background-color: #dbeafe;">
+                                  <tr>
+                                    <th>f<sub>teste</sub><br>Ângulo α</th>
+                                    <th>250 Hz<br>Calibração [dBA]</th>
+                                    <th>500 Hz <br> [dBA]</th>
+                                    <th>1 kHz <br> [dBA]</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>-75º</td>
+                                        <td>-18</td>
+                                        <td>-18</td>
+                                        <td>-19</td>
+                                    </tr>
+                                    <tr>
+                                        <td>-60º</td>
+                                        <td>-18</td>
+                                        <td>-19</td>
+                                        <td>-19</td>
+                                    </tr>
+                                    <tr>
+                                        <td>-45º</td>
+                                        <td>-20</td>
+                                        <td>-19</td>
+                                        <td>-19</td>
+                                    </tr>
+                                    <tr>
+                                        <td>-30º</td>
+                                        <td>-21</td>
+                                        <td>-20</td>
+                                        <td>-20</td>
+                                    </tr>
+                                    <tr>
+                                        <td>-15º</td>
+                                        <td>-20</td>
+                                        <td>-20</td>
+                                        <td>-20</td>
+                                    </tr>
+                                    <tr>
+                                        <td>0º</td>
+                                        <td>-21</td>
+                                        <td>-16</td>
+                                        <td>-21</td>
+                                    </tr>
+                                    <tr>
+                                        <td>15º</td>
+                                        <td>-21</td>
+                                        <td>-17</td>
+                                        <td>-21</td>
+                                    </tr>
+                                    <tr>
+                                        <td>30º</td>
+                                        <td>-23</td>
+                                        <td>-20</td>
+                                        <td>-19</td>
+                                    </tr>
+                                    <tr>
+                                        <td>45º</td>
+                                        <td>-22</td>
+                                        <td>-18</td>
+                                        <td>-18</td>
+                                    </tr>
+                                    <tr>
+                                        <td>60º</td>
+                                        <td>-24</td>
+                                        <td>-17</td>
+                                        <td>-18</td>
+                                    </tr>
+                                    <tr>
+                                        <td>75º</td>
+                                        <td>-22</td>
+                                        <td>-19</td>
+                                        <td>-17</td>
+                                    </tr>
+                                </tbody>
+                              </table>
+
+                        </div>
+
+                        <div class="col">
+                            <table cellpadding="6" style="border-collapse: collapse; text-align: center;">
+                                <caption><b>Tabela 2. Array na Horizontal, Senóides com defasagem 15 graus, medição a d = 0,75 m de distância</b></caption>
+                                <thead style="background-color: #dbeafe;">
+                                  <tr>
+                                    <th>f<sub>teste</sub><br>Ângulo α</th>
+                                    <th>1 kHz, defasagem 15º<br>[dBA]</th>
+                                    <th>2 kHz, defasagem 15º<br>[dBA]</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>-75º</td>
+                                        <td>-21</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>-60º</td>
+                                        <td>-21</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>-45º</td>
+                                        <td>-23</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>-30º</td>
+                                        <td>-24</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>-15º</td>
+                                        <td>-24</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>0º</td>
+                                        <td>-25</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>15º</td>
+                                        <td>-21</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>30º</td>
+                                        <td>-20</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>45º</td>
+                                        <td>-24</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>60º</td>
+                                        <td>-20</td>
+                                        <td></t15ºd>
+                                    </tr>
+                                    <tr>
+                                        <td>75º</td>
+                                        <td>-21</td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                              </table>
+
+                        </div>
+                    </div>
+
+
+                    <h3 class="text-center mb-4">Comparação: Cartesiano vs Polar</h3>
+
+                    <!-- 1 kHz Frente -->
+                    <div class="row align-items-center mb-5">
+                      <div class="col-12 text-center mb-2">
+                        <h5>1 kHz – Frente (f)</h5>
+                      </div>
+                      <div class="col-md-6 text-center">
+                        <p><b>Cartesiano</b></p>
+                        <img src="experimento_3/cartesiano/1khz_f.png" class="img-fluid" alt="Cartesiano 1kHz Frente">
+                      </div>
+                      <div class="col-md-6 text-center">
+                        <p><b>Polar</b></p>
+                        <img src="experimento_3/polar/1khz_f.png" class="img-fluid" alt="Polar 1kHz Frente">
+                      </div>
+                    </div>
+
+                    <!-- 2 kHz Horizontal -->
+                    <div class="row align-items-center mb-5">
+                      <div class="col-12 text-center mb-2">
+                        <h5>2 kHz – Horizontal (h)</h5>
+                      </div>
+                      <div class="col-md-6 text-center">
+                        <p><b>Cartesiano</b></p>
+                        <img src="experimento_3/cartesiano/2khz_h.png" class="img-fluid" alt="Cartesiano 2kHz Horizontal">
+                      </div>
+                      <div class="col-md-6 text-center">
+                        <p><b>Polar</b></p>
+                        <img src="experimento_3/polar/2khz_h.png" class="img-fluid" alt="Polar 2kHz Horizontal">
+                      </div>
+                    </div>
+
+                    <!-- 250 Hz Frente -->
+                    <div class="row align-items-center mb-5">
+                      <div class="col-12 text-center mb-2">
+                        <h5>250 Hz – Frente (f)</h5>
+                      </div>
+                      <div class="col-md-6 text-center">
+                        <p><b>Cartesiano</b></p>
+                        <img src="experimento_3/cartesiano/250hz_f.png" class="img-fluid" alt="Cartesiano 250Hz Frente">
+                      </div>
+                      <div class="col-md-6 text-center">
+                        <p><b>Polar</b></p>
+                        <img src="experimento_3/polar/250hz_f.png" class="img-fluid" alt="Polar 250Hz Frente">
+                      </div>
+                    </div>
+
+                    <!-- 500 Hz Frente -->
+                    <div class="row align-items-center mb-5">
+                      <div class="col-12 text-center mb-2">
+                        <h5>500 Hz – Frente (f)</h5>
+                      </div>
+                      <div class="col-md-6 text-center">
+                        <p><b>Cartesiano</b></p>
+                        <img src="experimento_3/cartesiano/500hz_f.png" class="img-fluid" alt="Cartesiano 500Hz Frente">
+                      </div>
+                      <div class="col-md-6 text-center">
+                        <p><b>Polar</b></p>
+                        <img src="experimento_3/polar/500hz_f.png" class="img-fluid" alt="Polar 500Hz Frente">
+                      </div>
+                    </div>
+
+                </section>
             </div>
         </div>
 
