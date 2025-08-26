@@ -39,6 +39,10 @@
             <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact"
                 type="button" role="tab" aria-controls="contact" aria-selected="false">Experimento 3</button>
             </li>
+            <li class="nav-item" role="presentation">
+            <button class="nav-link" id="exp4-tab" data-bs-toggle="tab" data-bs-target="#exp4"
+                type="button" role="tab" aria-controls="exp4" aria-selected="false">Experimento 4</button>
+            </li>
         </ul>
 
         <!-- Tabs Content -->
@@ -852,6 +856,122 @@
                 </section>
             </div>
         </div>
+
+    </div>
+
+    <div class="tab-pane fade gap-3" id="exp4" role="tabpanel" aria-labelledby="exp4-tab">
+        <div class="container">
+            <section class="text-center">
+                <h3>Introdução ao Ambisonics e Análise Cepstral</h3>
+                <p><a target="_blank" href="https://colab.research.google.com/drive/1USNhzLH55vcJPxtek-eM06v9WRluAAdK?authuser=2#scrollTo=NSagQ8pC_liX">Collab utilizado para processamentos</a></p>
+            </section>
+
+            <!-- Objetivos -->
+            <section class="mb-5">
+                <h3 class="mb-3">Objetivos</h3>
+                <ol type="a" class="list-group list-group-numbered">
+                    <li class="list-group-item">Utilizar uma DAW (Digital Audio Workstation) para verificar conceitos do Ambisonics</li>
+                    <li class="list-group-item">Efetuar gravação com microfone FOA (Ambisonics de 1ª ordem)</li>
+                    <li class="list-group-item">Efetuar o cálculo do cepstrum e determinar Formantes do Sinal de Voz</li>
+                </ol>
+            </section>
+
+            <!-- Introdução -->
+            <section class="mb-5">
+                <h3 class="mb-3">Introdução</h3>
+                <p>
+                    Este experimento tem como objetivo apresentar os conceitos de Ambisonics e análise cepstral.
+                    Através da utilização de softwares de áudio, será possível explorar a espacialização sonora
+                    e a determinação de formantes de sinais de voz, com ênfase em técnicas de gravação e processamento.
+                </p>
+            </section>
+
+            <!-- Materiais -->
+            <section class="mb-5">
+                <h3 class="mb-3">Material Necessário</h3>
+                <ol type="a" class="list-group list-group-numbered">
+                    <li class="list-group-item">Notebook com DAW Reaper e Audacity</li>
+                    <li class="list-group-item">Microfone Ambisonics FOA, com cabo USB</li>
+                    <li class="list-group-item">Celular para tocar músicas</li>
+                    <li class="list-group-item">Pedestal de microfone</li>
+                    <li class="list-group-item">Fone de ouvido</li>
+                    <li class="list-group-item">Notebook do Colab em Python, para cálculo do cepstrum e determinação de formantes</li>
+                </ol>
+            </section>
+
+            <!-- Procedimento (Setup) -->
+            <section class="mb-5">
+                <h3 class="mb-3">Procedimento</h3>
+
+                <h5>Parte A – Introdução ao Ambisonics com Reaper</h5>
+                <ol class="list-group list-group-numbered mb-3">
+                    <li class="list-group-item">No Reaper, verificar a instalação dos plugins: Synth1, IEM e NX Waves</li>
+                    <li class="list-group-item">Utilizar o fone de ouvido</li>
+                    <li class="list-group-item">Abrir uma trilha e configurar Route da trilha para 64 canais</li>
+                    <li class="list-group-item">Configurar o Master Mixer para 64 canais</li>
+                    <li class="list-group-item">Utilizar o Virtual Keyboard (Alt+B)</li>
+                    <li class="list-group-item">Configurar as entradas MIDI com algum instrumento do Synth1 (ex.: piano)</li>
+                    <li class="list-group-item">Adicionar panning com plugin IEM Stereo Encoder</li>
+                    <li class="list-group-item">Adicionar Decoder Ambisonics NX Quad/Stereo no Master</li>
+                    <li class="list-group-item">Alterar posição no painel de Panning e verificar a mudança espacial do som</li>
+                </ol>
+
+                <h5>Parte B – Gravação com microfone Ambisonics FOA</h5>
+                <ol class="list-group list-group-numbered mb-3">
+                    <li class="list-group-item">Posicionar o microfone Ambisonics e o celular para música de fundo</li>
+                    <li class="list-group-item">Realizar três leituras de textos com diferentes músicas de fundo e posições espaciais</li>
+                    <li class="list-group-item">Transferir as gravações para o PC e analisar no Audacity</li>
+                    <li class="list-group-item">Gerar espectrogramas em diferentes escalas: Logarítmica, Mel Cepstral e Bark</li>
+                </ol>
+
+                <h5 class="mb-3">Arquivos Gravados – Parte B</h5>
+                <p>Abaixo estão os arquivos gravados durante as leituras e músicas de fundo:</p>
+
+                <ol class="list-group list-group-numbered mb-3">
+                  <li class="list-group-item">
+                    <strong>Leitura 1 – O Burrinho Pedrês (com música 1)</strong>
+                    <p></p>
+                    <audio controls>
+                      <source src="experimento_4/recordings/rec_1.WAV" type="audio/wav">
+                      Seu navegador não suporta a reprodução de áudio.
+                    </audio>
+                  </li>
+                  <li class="list-group-item">
+                    <strong>Leitura 2 – Meu Destino (com música 2)</strong>
+                    <p></p>
+                    <audio controls>
+                      <source src="experimento_4/recordings/rec_2.WAV" type="audio/wav">
+                      Seu navegador não suporta a reprodução de áudio.
+                    </audio>
+                  </li>
+                  <li class="list-group-item">
+                    <strong>Leitura 3 – Amor (com música 3)</strong>
+                    <p></p>
+                    <audio controls>
+                      <source src="experimento_4/recordings/rec_3.WAV" type="audio/wav">
+                      Seu navegador não suporta a reprodução de áudio.
+                    </audio>
+                  </li>
+                </ol>
+
+                <h5>Parte C – Análise Cepstral</h5>
+                <ol class="list-group list-group-numbered mb-3">
+                    <li class="list-group-item">Utilizar o Colab para determinar as formantes (F1 a F4) de vogais por integrante</li>
+                    <li class="list-group-item">Utilizar análise cepstral para determinar pitch e validar com software Praat</li>
+                </ol>
+                <div class="text-center">
+                    <p><b>Formantes</b></p>
+                    <img src="experimento_4/formantes/formantes.jpg" class="img-fluid" alt="formantes do grupo">
+                </div>
+                <div class="text-center">
+                    <p><b>Praat</b></p>
+                    <img src="experimento_4/formantes/praat.jpg" class="img-fluid" alt="praat do grupo">
+                </div>
+            </section>
+
+
+        </div>
+    </div>
 
     </div>
 
