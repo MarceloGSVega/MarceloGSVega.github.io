@@ -54,8 +54,9 @@ Cada relatório de laboratório contém as seguintes seções:
 
 ## 👥 Equipe
 
-- [Nome do Membro 1] - RA: XXXXXX
-- [Nome do Membro 2] - RA: XXXXXX
+- Endreu Pedro Cardoso de Jesus - RA: 11202322089
+- Gabriel Monteiro Rocha - RA: 11202230754
+- Marcelo Goulart Salinas Vega - RA: 11201921598
 
 ## 📖 Como Navegar
 
