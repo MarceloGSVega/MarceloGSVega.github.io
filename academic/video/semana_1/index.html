@@ -22,14 +22,36 @@
             <p class="lead text-muted">Processamento de Vídeo</p>
         </header>
 
+        <!-- Link para documento completo -->
+        <!-- Link do sharepoint nao funciona, acesso negado. -->
+        <!-- <div class="alert alert-primary mb-5" role="alert">
+            <div class="d-flex align-items-center">
+                <div class="flex-shrink-0">
+                    <i class="bi bi-file-earmark-word fs-2 me-3"></i>
+                </div>
+                <div class="flex-grow-1">
+                    <h4 class="alert-heading mb-2">Documento Completo</h4>
+                    <p class="mb-0">
+                        Acesse a versão completa deste relatório no Microsoft Word:
+                        <a href="https://alunoufabcedu-my.sharepoint.com/:w:/r/personal/monteiro_g_aluno_ufabc_edu_br/_layouts/15/Doc.aspx?sourcedoc=%7B7DFF59E6-53C4-4606-ACA4-B047A8E2FF26%7D&file=Document%201.docx"
+                           class="alert-link"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            <i class="bi bi-box-arrow-up-right"></i> Abrir no SharePoint
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div> -->
+
         <!-- 1. Introdução -->
         <section class="mb-5">
             <h2 class="h3 mb-3">1. Introdução</h2>
             <div class="card">
                 <div class="card-body">
-                    <p>
-                        Este relatório documenta os procedimentos e resultados do Laboratório 1 da disciplina de Processamento de Vídeo, cujo objetivo principal foi iniciar os trabalhos com a biblioteca OpenCV e estabelecer a base para o desenvolvimento de tarefas de visão computacional. O experimento focou na preparação e configuração do ambiente, no estudo dos comandos fundamentais de entrada e saída de imagens e vídeos a partir de arquivos e na implementação de scripts para captura de mídia utilizando a webcam. Este documento visa servir como referência técnica para a equipe sobre a programação de manipulação de mídias e câmeras.
-                    </p>
+                    <p>Este relatório documenta os procedimentos e resultados do Laboratório 1 da disciplina de Processamento de Vídeo, cujo objetivo principal foi iniciar os trabalhos com a biblioteca OpenCV e estabelecer a base para o desenvolvimento de tarefas de visão computacional.</p>
+                    <p>O experimento focou na preparação e configuração do ambiente, no estudo dos comandos fundamentais de entrada e saída de imagens e vídeos a partir de arquivos e na implementação de scripts para captura de mídia utilizando a webcam.</p>
+                    <p>Este documento visa servir como referência técnica para a equipe sobre a programação de manipulação de mídias e câmeras.</p>
                 </div>
             </div>
         </section>
@@ -40,7 +62,13 @@
             <div class="card">
                 <div class="card-body">
                     <p>
-                       O processamento de vídeo e imagem se baseia na manipulação de dados em formato de matriz, sendo a biblioteca OpenCV a ferramenta central, responsável por fornecer as rotinas de Entrada/Saída. No OpenCV, uma imagem estática é carregada como uma matriz NumPy, onde cada elemento é um pixel de cor, sendo o padrão de canais o BGR (Azul, Verde, Vermelho). Já o vídeo é tratado como uma sequência de imagens estáticas, chamadas de frames, que são processadas individualmente em um loop através do objeto `cv2.VideoCapture` e exibidas na tela a uma taxa de FPS (Frames por Segundo), métrica fundamental para a avaliação do desempenho de qualquer algoritmo de processamento em tempo real.
+                        O processamento de vídeo e imagem se baseia na manipulação de dados em formato de matriz, sendo a biblioteca OpenCV a ferramenta central, responsável por fornecer as rotinas de Entrada/Saída.
+                    </p>
+                    <p>
+                        No OpenCV, uma imagem estática é carregada como uma matriz NumPy, onde cada elemento é um pixel de cor, sendo o padrão de canais o BGR (Azul, Verde, Vermelho).
+                    </p>
+                    <p>
+                        Já o vídeo é tratado como uma sequência de imagens estáticas, chamadas de frames, que são processadas individualmente em um loop através do objeto `cv2.VideoCapture` e exibidas na tela a uma taxa de FPS (Frames por Segundo), métrica fundamental para a avaliação do desempenho de qualquer algoritmo de processamento em tempo real.
                     </p>
                 </div>
             </div>
@@ -51,13 +79,7 @@
             <h2 class="h3 mb-3">3. Materiais e Métodos</h2>
             <div class="card">
                 <div class="card-body">
-                    <h4 class="h5">3.1 Diagrama de Blocos Funcional</h4>
-                    <div class="text-center my-4">
-                        <!-- Adicione aqui seu diagrama de blocos -->
-                        [Inserir imagem do diagrama]
-                    </div>
-
-                    <h4 class="h5">3.2 Ambiente de Desenvolvimento</h4>
+                    <h4 class="h5">3.1 Ambiente de Desenvolvimento</h4>
                     <div class="ambiente-dev">
                         <!-- 1. Ubuntu -->
                         <div class="tool-section mb-4">
@@ -129,25 +151,164 @@
 
                         <!-- 7. Python -->
                         <div class="tool-section mb-4">
-                            <h5 class="h6 fw-bold">7. Python</h5>
-                            <p><strong>O que é:</strong> Linguagem de programação principal usada para rodar os scripts com OpenCV.</p>
+                            <h5 class="h6 fw-bold">7. Python e C++</h5>
+                            <p><strong>O que sao:</strong> Linguagens de programação usadas para rodar os scripts com OpenCV.</p>
                             <p><strong>Finalidade:</strong> Fornece o ambiente de programação para desenvolver tarefas de visão computacional.</p>
                         </div>
 
                         <!-- 8. VLC Media Player -->
                         <div class="tool-section mb-4">
-                            <h5 class="h6 fw-bold">8. VLC Media Player</h5>
+                            <h5 class="h6 fw-bold">9. VLC Media Player</h5>
                             <p><strong>O que é:</strong> Reprodutor multimídia gratuito e de código aberto.</p>
                             <p><strong>Finalidade:</strong> Permite visualizar vídeos e imagens fora do OpenCV, útil para testes e validação de resultados do processamento de vídeo.</p>
                         </div>
                     </div>
 
+                    <h4 class="h5 mt-4">3.2 Processamentos Basicos de Imagem</h4>
+                    <div class="experimental-steps">
+                        <!-- Step 1 -->
+                        <div class="step-card mb-4">
+                            <div class="card">
+                                <div class="card-header bg-light">
+                                    <h5 class="h6 mb-0">
+                                        A) Leitura de Imagem e visualizacao na tela
+                                    </h5>
+                                </div>
+                                <div class="card-body">
+                                    <p class="mb-0">
+                                        Inicialmente, utilizado o codigo fornecido pelo professor, visto abaixo:
+                                    </p>
+                                    <pre>
+                                        <code>
+                    import numpy as np
+                    import cv2 as cv
+
+                    img = cv.imread('messi5.jpg')
+
+                    cv.imshow('image',img)
+
+                    k = cv.waitKey(0)
+
+                    if k == ord('s'):
+                        cv.imwrite('messi5.png', img)
+
+                    if k == 27:         # wait for ESC key to exit
+                        cv.destroyAllWindows()
+
+                                        </code>
+                                    </pre>
+
+                                    <ul class="list-unstyled mt-2">
+                                        <p>Alteracoes realizadas:</p>
+                                        <li><i class="bi bi-check-circle-fill text-success"></i> Salvamento do arquivo em .png, ao pressionar a tecla 's'</li>
+                                    </ul>
+
+                                    <div class="d-flex gap-3">
+                                        <div class="row justify-content-center">
+                                            JPG
+                                            <img src="./imagens/messi5.jpg" title="jpg (original)" alt="">
+                                        </div>
+
+                                        <div class="row justify-content-center">
+                                            PNG
+                                            <img src="./imagens/messi5.png" title="png (convertida)" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
                     <h4 class="h5 mt-4">3.3 Procedimentos Experimentais</h4>
-                    <ol>
-                        <li>[Descreva o passo 1]</li>
-                        <li>[Descreva o passo 2]</li>
-                        <!-- Adicione mais passos conforme necessário -->
-                    </ol>
+                    <div class="experimental-steps">
+                        <!-- Step 1 -->
+                        <div class="step-card mb-4">
+                            <div class="card">
+                                <div class="card-header bg-light">
+                                    <h5 class="h6 mb-0">
+                                        <i class="bi bi-file-play"></i> Step 1 – Captura de vídeo local
+                                    </h5>
+                                </div>
+                                <div class="card-body">
+                                    <p class="mb-0">
+                                        Inicialmente, foi implementado um programa de leitura de vídeo a partir de um arquivo local utilizando a classe <code>cv2.VideoCapture</code>. Esse experimento teve como objetivo compreender o processo básico de:
+                                    </p>
+                                    <ul class="list-unstyled mt-2">
+                                        <li><i class="bi bi-check-circle-fill text-success"></i> Abertura e leitura de vídeos</li>
+                                        <li><i class="bi bi-check-circle-fill text-success"></i> Exibição de quadros</li>
+                                        <li><i class="bi bi-check-circle-fill text-success"></i> Manipulação de propriedades (FPS, total de quadros)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div class="step-card mb-4">
+                            <div class="card">
+                                <div class="card-header bg-light">
+                                    <h5 class="h6 mb-0">
+                                        <i class="bi bi-camera-video"></i> Step 2 – Captura de fluxo em tempo real
+                                    </h5>
+                                </div>
+                                <div class="card-body">
+                                    <p>Adaptação do procedimento para leitura em tempo real através de:</p>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="source-type p-3 border rounded">
+                                                <h6><i class="bi bi-broadcast"></i> Stream RTMP</h6>
+                                                <p class="small mb-0">Integração com fluxos de vídeo ao vivo via OBS Studio</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="source-type p-3 border rounded">
+                                                <h6><i class="bi bi-webcam"></i> Webcam Local</h6>
+                                                <p class="small mb-0">Captura direta da câmera do dispositivo</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div class="step-card mb-4">
+                            <div class="card">
+                                <div class="card-header bg-light">
+                                    <h5 class="h6 mb-0">
+                                        <i class="bi bi-save"></i> Step 3 – Gravação de vídeos
+                                    </h5>
+                                </div>
+                                <div class="card-body">
+                                    <p>Desenvolvimento de programa para gravação utilizando <code>cv2.VideoWriter</code></p>
+                                    <div class="config-params mt-3">
+                                        <span class="badge bg-primary me-2">Codec</span>
+                                        <span class="badge bg-primary me-2">Taxa de quadros</span>
+                                        <span class="badge bg-primary">Dimensões</span>
+                                    </div>
+                                    <p class="mt-3 mb-0">Objetivo: Registrar e salvar transmissões para análise posterior.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step 4 -->
+                        <div class="step-card mb-4">
+                            <div class="card">
+                                <div class="card-header bg-light">
+                                    <h5 class="h6 mb-0">
+                                        <i class="bi bi-images"></i> Step 4 – Processamento de sequência de imagens
+                                    </h5>
+                                </div>
+                                <div class="card-body">
+                                    <p>Adaptação para leitura de sequências de imagens (ex.: Cars0001.jpg, Cars0002.jpg)</p>
+                                    <div class="alert alert-info" role="alert">
+                                        <i class="bi bi-info-circle"></i> Esta abordagem simula uma captura quadro a quadro,
+                                        demonstrando como o OpenCV processa lotes de imagens como fluxos contínuos.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -158,14 +319,102 @@
             <div class="card">
                 <div class="card-body">
                     <div class="results-analysis">
-                        <h4 class="h5">4.1 Resultados Obtidos</h4>
-                        <!-- Adicione aqui seus resultados, gráficos, imagens -->
+                        <!-- 4.1 Resultados Obtidos -->
+                        <div class="results-section mb-4">
+                            <h4 class="h5 mb-3">4.1 Resultados Obtidos</h4>
+                            <div class="row g-4">
+                                <!-- Resultado 1 -->
+                                <div class="col-md-6">
+                                    <div class="card h-100">
+                                        <div class="card-header bg-success text-white">
+                                            <i class="bi bi-file-play"></i> Leitura de vídeos locais
+                                        </div>
+                                        <div class="card-body">
+                                            <p class="card-text">
+                                                Foi possível reproduzir vídeos e extrair informações como FPS e número de quadros.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
 
-                        <h4 class="h5 mt-4">4.2 Análise dos Resultados</h4>
-                        <p>
-                            [Descreva aqui sua análise e observações dos resultados obtidos,
-                            detalhando os efeitos causados nas imagens e nos sinais]
-                        </p>
+                                <!-- Resultado 2 -->
+                                <div class="col-md-6">
+                                    <div class="card h-100">
+                                        <div class="card-header bg-primary text-white">
+                                            <i class="bi bi-camera-video"></i> Captura em tempo real
+                                        </div>
+                                        <div class="card-body">
+                                            <p class="card-text">
+                                                A leitura da stream via RTMP funcionou corretamente, exibindo os quadros ao vivo no OpenCV.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Resultado 3 -->
+                                <div class="col-md-6">
+                                    <div class="card h-100">
+                                        <div class="card-header bg-info text-white">
+                                            <i class="bi bi-save"></i> Gravação
+                                        </div>
+                                        <div class="card-body">
+                                            <p class="card-text">
+                                                O vídeo capturado foi salvo no formato .avi, com qualidade satisfatória e sincronização estável entre captura e gravação.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Resultado 4 -->
+                                <div class="col-md-6">
+                                    <div class="card h-100">
+                                        <div class="card-header bg-warning">
+                                            <i class="bi bi-images"></i> Sequência de imagens
+                                        </div>
+                                        <div class="card-body">
+                                            <p class="card-text">
+                                                O processamento ocorreu sem perdas visuais perceptíveis, demonstrando que o OpenCV trata sequências de imagens de forma eficiente.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 4.2 Análise dos Resultados -->
+                        <div class="analysis-section">
+                            <h4 class="h5 mb-3">4.2 Análise dos Resultados</h4>
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="findings-list">
+                                        <div class="finding-item mb-3 p-3 border-start border-4 border-primary">
+                                            <h6 class="mb-2"><i class="bi bi-gear-fill"></i> Versatilidade do VideoCapture</h6>
+                                            <p class="mb-0">O <code>cv2.VideoCapture</code> é versátil, podendo receber dados de diferentes fontes (arquivo, câmera, RTMP, sequência de imagens).</p>
+                                        </div>
+
+                                        <div class="finding-item mb-3 p-3 border-start border-4 border-success">
+                                            <h6 class="mb-2"><i class="bi bi-speedometer"></i> Desempenho</h6>
+                                            <p class="mb-0">O desempenho depende fortemente do frame rate e do tempo de espera configurado em <code>cv2.waitKey()</code>.</p>
+                                        </div>
+
+                                        <div class="finding-item mb-3 p-3 border-start border-4 border-warning">
+                                            <h6 class="mb-2"><i class="bi bi-exclamation-triangle"></i> Transmissões RTMP</h6>
+                                            <p class="mb-0">Pequenos atrasos ou falhas de rede durante transmissões RTMP resultam em perda de quadros.</p>
+                                        </div>
+
+                                        <div class="finding-item mb-3 p-3 border-start border-4 border-info">
+                                            <h6 class="mb-2"><i class="bi bi-camera-reels"></i> VideoWriter</h6>
+                                            <p class="mb-0">O <code>cv2.VideoWriter</code> requer que a taxa de quadros e o tamanho dos quadros sejam compatíveis com a fonte de entrada.</p>
+                                        </div>
+
+                                        <div class="finding-item mb-3 p-3 border-start border-4 border-secondary">
+                                            <h6 class="mb-2"><i class="bi bi-file-earmark-code"></i> Formatos e Codecs</h6>
+                                            <p class="mb-0">O uso de formatos padronizados (ex.: MJPG) e caminhos corretos de escrita evitou erros relacionados a codecs e permissões.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -174,13 +423,103 @@
         <!-- 5. Conclusões -->
         <section class="mb-5">
             <h2 class="h3 mb-3">5. Conclusões e Comentários Finais</h2>
-            <div class="card">
-                <div class="card-body">
-                    <p>
-                        [Apresente aqui suas conclusões e aprendizados técnicos obtidos durante o experimento]
-                    </p>
+                <div class="card">
+                    <div class="card-body">
+                        <!-- Introdução da Conclusão -->
+                        <div class="conclusion-intro mb-4">
+                            <p class="lead">
+                                O experimento permitiu compreender de forma prática os fundamentos da captura,
+                                exibição e gravação de imagens e vídeos com OpenCV.
+                            </p>
+                        </div>
+
+                        <!-- Lições Aprendidas -->
+                        <div class="lessons-learned mb-4">
+                            <h4 class="h5 mb-3">
+                                <i class="bi bi-lightbulb"></i> Principais Lições Aprendidas
+                            </h4>
+                            <div class="row g-4">
+                                <!-- Lição 1 -->
+                                <div class="col-md-6">
+                                    <div class="card h-100 border-primary">
+                                        <div class="card-body">
+                                            <h6 class="card-title">
+                                                <i class="bi bi-shield-check"></i> Verificação de Retorno
+                                            </h6>
+                                            <p class="card-text">
+                                                A importância de verificar o retorno (<code>ret</code>) das funções
+                                                de captura para evitar falhas silenciosas.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Lição 2 -->
+                                <div class="col-md-6">
+                                    <div class="card h-100 border-success">
+                                        <div class="card-body">
+                                            <h6 class="card-title">
+                                                <i class="bi bi-recycle"></i> Gerenciamento de Recursos
+                                            </h6>
+                                            <p class="card-text">
+                                                A necessidade de liberar recursos (<code>release()</code>) ao final
+                                                da execução para evitar travamentos.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Lição 3 -->
+                                <div class="col-md-6">
+                                    <div class="card h-100 border-info">
+                                        <div class="card-body">
+                                            <h6 class="card-title">
+                                                <i class="bi bi-diagram-3"></i> Fluxos de Dados
+                                            </h6>
+                                            <p class="card-text">
+                                                A diferença entre fluxos locais e remotos, principalmente quanto
+                                                à latência e estabilidade.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Lição 4 -->
+                                <div class="col-md-6">
+                                    <div class="card h-100 border-warning">
+                                        <div class="card-body">
+                                            <h6 class="card-title">
+                                                <i class="bi bi-camera-reels"></i> Parâmetros de Gravação
+                                            </h6>
+                                            <p class="card-text">
+                                                O papel do <code>cv2.VideoWriter</code> na gravação e a influência
+                                                dos parâmetros de codec e FPS na qualidade final.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Considerações Finais -->
+                        <div class="final-considerations mt-4">
+                            <div class="alert alert-success" role="alert">
+                                <h4 class="alert-heading">
+                                    <i class="bi bi-arrow-right-circle"></i> Aplicações Futuras
+                                </h4>
+                                <p class="mb-0">
+                                    De modo geral, os programas desenvolvidos podem servir como base para futuras
+                                    aplicações de visão computacional, como:
+                                </p>
+                                <ul class="mt-2 mb-0">
+                                    <li>Análise de movimento</li>
+                                    <li>Detecção de objetos</li>
+                                    <li>Transmissão de vídeo em tempo real</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
         </section>
     </div>
 
