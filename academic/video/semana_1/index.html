@@ -303,62 +303,22 @@
                             <div class="card">
                                 <div class="card-header bg-light">
                                     <h5 class="h6 mb-0">
-                                        <i class="bi bi-camera-video"></i> Step 2 – Captura de fluxo em tempo real
-                                    </h5>
-                                </div>
-                                <div class="card-body">
-                                    <p>Adaptação do procedimento para leitura em tempo real através de:</p>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="source-type p-3 border rounded">
-                                                <h6><i class="bi bi-broadcast"></i> Stream RTMP</h6>
-                                                <p class="small mb-0">Integração com fluxos de vídeo ao vivo via OBS Studio</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="source-type p-3 border rounded">
-                                                <h6><i class="bi bi-webcam"></i> Webcam Local</h6>
-                                                <p class="small mb-0">Captura direta da câmera do dispositivo</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Step 3 -->
-                        <div class="step-card mb-4">
-                            <div class="card">
-                                <div class="card-header bg-light">
-                                    <h5 class="h6 mb-0">
-                                        <i class="bi bi-save"></i> Step 3 – Gravação de vídeos
+                                        <i class="bi bi-save"></i> Passo 2 – Gravação de vídeos
                                     </h5>
                                 </div>
                                 <div class="card-body">
                                     <p>Desenvolvimento de programa para gravação utilizando <code>cv2.VideoWriter</code></p>
-                                    <div class="config-params mt-3">
-                                        <span class="badge bg-primary me-2">Codec</span>
-                                        <span class="badge bg-primary me-2">Taxa de quadros</span>
-                                        <span class="badge bg-primary">Dimensões</span>
-                                    </div>
                                     <p class="mt-3 mb-0">Objetivo: Registrar e salvar transmissões para análise posterior.</p>
                                 </div>
-                            </div>
-                        </div>
 
-                        <!-- Step 4 -->
-                        <div class="step-card mb-4">
-                            <div class="card">
-                                <div class="card-header bg-light">
-                                    <h5 class="h6 mb-0">
-                                        <i class="bi bi-images"></i> Step 4 – Processamento de sequência de imagens
-                                    </h5>
-                                </div>
-                                <div class="card-body">
-                                    <p>Adaptação para leitura de sequências de imagens (ex.: Cars0001.jpg, Cars0002.jpg)</p>
-                                    <div class="alert alert-info" role="alert">
-                                        <i class="bi bi-info-circle"></i> Esta abordagem simula uma captura quadro a quadro,
-                                        demonstrando como o OpenCV processa lotes de imagens como fluxos contínuos.
+                                <div class="row justify-content-center mb-3">
+                                    <div class="col ms-5">
+                                        <h5 class="ms-5">Video curto - Marcelo</h5>
+                                        <video src="./videos/recording.mp4" controls></video>
+                                    </div>
+                                    <div class="col ms-5">
+                                        <h5 class="ms-5">Video curto - Carregador Portatil</h5>
+                                        <video src="./videos/recording_obj.mp4" controls></video>
                                     </div>
                                 </div>
                             </div>
@@ -392,19 +352,6 @@
                                     </div>
                                 </div>
 
-                                <!-- Resultado 2 -->
-                                <div class="col-md-6">
-                                    <div class="card h-100">
-                                        <div class="card-header bg-primary text-white">
-                                            <i class="bi bi-camera-video"></i> Captura em tempo real
-                                        </div>
-                                        <div class="card-body">
-                                            <p class="card-text">
-                                                A leitura da stream via RTMP funcionou corretamente, exibindo os quadros ao vivo no OpenCV.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
 
                                 <!-- Resultado 3 -->
                                 <div class="col-md-6">
@@ -450,11 +397,6 @@
                                         <div class="finding-item mb-3 p-3 border-start border-4 border-success">
                                             <h6 class="mb-2"><i class="bi bi-speedometer"></i> Desempenho</h6>
                                             <p class="mb-0">O desempenho depende fortemente do frame rate e do tempo de espera configurado em <code>cv2.waitKey()</code>.</p>
-                                        </div>
-
-                                        <div class="finding-item mb-3 p-3 border-start border-4 border-warning">
-                                            <h6 class="mb-2"><i class="bi bi-exclamation-triangle"></i> Transmissões RTMP</h6>
-                                            <p class="mb-0">Pequenos atrasos ou falhas de rede durante transmissões RTMP resultam em perda de quadros.</p>
                                         </div>
 
                                         <div class="finding-item mb-3 p-3 border-start border-4 border-info">
