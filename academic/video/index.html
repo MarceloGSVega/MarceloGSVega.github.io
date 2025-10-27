@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,39 +12,77 @@
       min-height: 100vh;
       display: flex;
     }
+
     .sidebar {
       width: 250px;
       background-color: #f8f9fa;
       border-right: 1px solid #dee2e6;
       padding-top: 2rem;
     }
+
     .sidebar .nav-link {
       font-weight: 500;
       color: #333;
     }
+
     .sidebar .nav-link.active {
       background-color: #0d6efd;
       color: #fff;
     }
+
     .content {
       flex-grow: 1;
       padding: 2rem;
     }
+
+    .team-image-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background: linear-gradient(to bottom, #f8f9fa, #ffffff);
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .team-image-container:hover {
+      transform: translateY(-5px);
+    }
+
+    .team-image {
+      width: 100%;
+      height: auto;
+      max-height: 700px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      filter: brightness(1.02) contrast(0.95);
+    }
+
+    .team-image:hover {
+      filter: brightness(1.05) contrast(1);
+      transform: scale(1.01);
+    }
   </style>
 </head>
+
 <body>
   <!-- Sidebar -->
   <div class="sidebar d-flex flex-column p-3">
     <h4 class="text-center mb-4 fw-bold">Processamento de Vídeo</h4>
     <ul class="nav nav-pills flex-column" id="tabMenu" role="tablist">
       <li class="nav-item mb-2">
-        <button class="nav-link active w-100" id="membros-tab" data-bs-toggle="tab" data-bs-target="#membros" type="button" role="tab">Membros</button>
+        <button class="nav-link active w-100" id="membros-tab" data-bs-toggle="tab" data-bs-target="#membros"
+          type="button" role="tab">Membros</button>
       </li>
       <li class="nav-item mb-2">
-        <button class="nav-link w-100" id="relatorios-tab" data-bs-toggle="tab" data-bs-target="#relatorios" type="button" role="tab">Relatórios</button>
+        <button class="nav-link w-100" id="relatorios-tab" data-bs-toggle="tab" data-bs-target="#relatorios"
+          type="button" role="tab">Relatórios</button>
       </li>
       <li class="nav-item mb-2">
-        <button class="nav-link w-100" id="projeto-tab" data-bs-toggle="tab" data-bs-target="#projeto" type="button" role="tab">Projeto</button>
+        <button class="nav-link w-100" id="projeto-tab" data-bs-toggle="tab" data-bs-target="#projeto" type="button"
+          role="tab">Projeto</button>
       </li>
     </ul>
   </div>
@@ -53,28 +92,34 @@
     <!-- Membros -->
     <div class="tab-pane fade show active" id="membros" role="tabpanel" aria-labelledby="membros-tab">
       <h2 class="mb-3">Membros do Grupo</h2>
-      <div class="row mb-4">
-        <div class="col text-center">
-          <h5>Foto do Grupo</h5>
-          <img src="grupo.jpg" class="img-fluid rounded shadow" alt="Foto do Grupo">
+      <div class="row mb-5">
+        <div class="col">
+          <div class="team-image-container text-center">
+            <h5 class="mb-4">Foto do Grupo</h5>
+            <img src="assets/team-image.png" class="team-image" alt="Foto do Grupo">
+          </div>
         </div>
       </div>
-      <div class="row g-4">
+      <div class="row g-4" style="justify-content:space-around">
         <div class="col-md-3 text-center">
-          <img src="avatar1.jpg" class="rounded-circle mb-2 shadow" width="120" height="120" alt="Avatar">
+          <img src="assets/avatars/andreu-avatar.png" class="rounded-circle mb-2 shadow" width="120" height="120"
+            alt="Foto do Endreu">
           <h6>Endreu Pedro Cardoso de Jesus</h6>
           <h6>RA: 11202322089</h6>
         </div>
         <div class="col-md-3 text-center">
-          <img src="avatar2.jpg" class="rounded-circle mb-2 shadow" width="120" height="120" alt="Avatar">
-          <h6>Gabriel Monteiro Rocha</h6>
-          <h6>RA: 11202230754</h6>
-        </div>
-        <div class="col-md-3 text-center">
-          <img src="avatar3.jpg" class="rounded-circle mb-2 shadow" width="120" height="120" alt="Avatar">
+          <img src="assets/avatars/marcelo-avatar.png" class="rounded-circle mb-2 shadow" width="120" height="120"
+            alt="Foto do Marcelo">
           <h6>Marcelo Goulart Salinas Vega</h6>
           <h6>RA: 11201921598</h6>
         </div>
+        <div class="col-md-3 text-center">
+          <img src="assets/avatars/gabriel-avatar.png" class="rounded-circle mb-2 shadow" width="120" height="120"
+            alt="Foto do Gabriel">
+          <h6>Gabriel Monteiro Rocha</h6>
+          <h6>RA: 11202230754</h6>
+        </div>
+
       </div>
     </div>
 
@@ -82,20 +127,166 @@
     <div class="tab-pane fade" id="relatorios" role="tabpanel" aria-labelledby="relatorios-tab">
       <h2 class="mb-3">Relatórios Semanais</h2>
       <div class="accordion" id="accordionRelatorios">
+        <!-- Semana 1 -->
         <div class="accordion-item">
           <h2 class="accordion-header" id="headingSemana1">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#semana1" aria-expanded="true" aria-controls="semana1">
-              Semana 1
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#semana1"
+              aria-expanded="true" aria-controls="semana1">
+              <i class="bi bi-camera-video me-2"></i> Semana 1 - Introdução ao OpenCV
             </button>
           </h2>
-          <div id="semana1" class="accordion-collapse collapse show" aria-labelledby="headingSemana1" data-bs-parent="#accordionRelatorios">
-            <div class="accordion-body d-flex">
-              <p>Aprendendo a trabalhar com a biblioteca openCV para realizar alteracoes em imagens e gravar videos utilizando a webcam.</p>
-              <a href="/academic/video/semana_1" target="_blank" class="ms-auto btn btn-primary btn-sm">Ver mais</a>
+          <div id="semana1" class="accordion-collapse collapse show" aria-labelledby="headingSemana1"
+            data-bs-parent="#accordionRelatorios">
+            <div class="accordion-body">
+              <div class="row align-items-center">
+                <div class="col">
+                  <h5 class="mb-2">Captura e Manipulação Básica de Imagens</h5>
+                  <p class="mb-0">Aprendendo a trabalhar com a biblioteca OpenCV para realizar alterações em imagens e
+                    gravar vídeos utilizando a webcam.</p>
+                </div>
+                <div class="col-auto">
+                  <a href="semana_1/index.html" class="btn btn-primary">
+                    <i class="bi bi-file-text me-2"></i>Ver Relatório
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <!-- Copiar este bloco accordion-item para novas semanas -->
+
+        <!-- Semana 2 -->
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingSemana2">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#semana2"
+              aria-expanded="false" aria-controls="semana2">
+              <i class="bi bi-sliders me-2"></i> Semana 2 - Processamento de Imagens
+            </button>
+          </h2>
+          <div id="semana2" class="accordion-collapse collapse" aria-labelledby="headingSemana2"
+            data-bs-parent="#accordionRelatorios">
+            <div class="accordion-body">
+              <div class="row align-items-center">
+                <div class="col">
+                  <h5 class="mb-2">Filtros e Transformações</h5>
+                  <p class="mb-0">Aplicação de filtros, transformações geométricas e técnicas de processamento digital
+                    de imagens.</p>
+                </div>
+                <div class="col-auto">
+                  <a href="semana_2/index.html" class="btn btn-primary">
+                    <i class="bi bi-file-text me-2"></i>Ver Relatório
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Semana 3 -->
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingSemana3">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#semana3"
+              aria-expanded="false" aria-controls="semana3">
+              <i class="bi bi-grid-3x3 me-2"></i> Semana 3 - Segmentação
+            </button>
+          </h2>
+          <div id="semana3" class="accordion-collapse collapse" aria-labelledby="headingSemana3"
+            data-bs-parent="#accordionRelatorios">
+            <div class="accordion-body">
+              <div class="row align-items-center">
+                <div class="col">
+                  <h5 class="mb-2">Técnicas de Segmentação</h5>
+                  <p class="mb-0">Implementação de algoritmos de segmentação e detecção de bordas em imagens.</p>
+                </div>
+                <div class="col-auto">
+                  <a href="semana_3/index.html" class="btn btn-primary">
+                    <i class="bi bi-file-text me-2"></i>Ver Relatório
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Semana 4 -->
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingSemana4">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#semana4"
+              aria-expanded="false" aria-controls="semana4">
+              <i class="bi bi-eye me-2"></i> Semana 4 - Detecção de Objetos
+            </button>
+          </h2>
+          <div id="semana4" class="accordion-collapse collapse" aria-labelledby="headingSemana4"
+            data-bs-parent="#accordionRelatorios">
+            <div class="accordion-body">
+              <div class="row align-items-center">
+                <div class="col">
+                  <h5 class="mb-2">Reconhecimento de Padrões</h5>
+                  <p class="mb-0">Desenvolvimento de algoritmos para detecção e reconhecimento de objetos em imagens.
+                  </p>
+                </div>
+                <div class="col-auto">
+                  <a href="semana_4/index.html" class="btn btn-primary">
+                    <i class="bi bi-file-text me-2"></i>Ver Relatório
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Semana 5 -->
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingSemana5">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#semana5"
+              aria-expanded="false" aria-controls="semana5">
+              <i class="bi bi-play-circle me-2"></i> Semana 5 - Processamento de Vídeo
+            </button>
+          </h2>
+          <div id="semana5" class="accordion-collapse collapse" aria-labelledby="headingSemana5"
+            data-bs-parent="#accordionRelatorios">
+            <div class="accordion-body">
+              <div class="row align-items-center">
+                <div class="col">
+                  <h5 class="mb-2">Análise de Movimento</h5>
+                  <p class="mb-0">Técnicas de processamento de vídeo e análise de movimento em sequências de imagens.
+                  </p>
+                </div>
+                <div class="col-auto">
+                  <a href="semana_5/index.html" class="btn btn-primary">
+                    <i class="bi bi-file-text me-2"></i>Ver Relatório
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Semana 6 -->
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingSemana6">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#semana6"
+              aria-expanded="false" aria-controls="semana6">
+              <i class="bi bi-person-badge me-2"></i> Semana 6 - Reconhecimento Facial
+            </button>
+          </h2>
+          <div id="semana6" class="accordion-collapse collapse" aria-labelledby="headingSemana6"
+            data-bs-parent="#accordionRelatorios">
+            <div class="accordion-body">
+              <div class="row align-items-center">
+                <div class="col">
+                  <h5 class="mb-2">Detecção e Reconhecimento Facial</h5>
+                  <p class="mb-0">Implementação de sistema de reconhecimento facial utilizando técnicas avançadas de
+                    visão computacional.</p>
+                </div>
+                <div class="col-auto">
+                  <a href="semana_6/index.html" class="btn btn-primary">
+                    <i class="bi bi-file-text me-2"></i>Ver Relatório
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -103,15 +294,20 @@
     <div class="tab-pane fade" id="projeto" role="tabpanel" aria-labelledby="projeto-tab">
       <h2 class="mb-3">Projeto do Grupo</h2>
       <p>Descrição geral do projeto final do grupo.</p>
-      <img src="projeto.jpg" class="img-fluid rounded shadow mb-3" alt="Imagem do Projeto">
-      <video class="w-100 mb-3" controls>
-        <source src="projeto.mp4" type="video/mp4">
-        Seu navegador não suporta vídeos.
-      </video>
-      <a href="https://exemplo.com/projeto" target="_blank" class="btn btn-success">Ver Projeto Completo</a>
-    </div>
+
+      <div style="position: relative; width: 100%; height: 0; padding-top: 56.2500%;
+ padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
+ border-radius: 8px; will-change: transform;">
+        <iframe loading="lazy"
+          style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
+          src="https://www.canva.com/design/DAG10VWsYyY/iM2ysIH1k4bKZ2E73LIA7g/view?embed"
+          allowfullscreen="allowfullscreen" allow="fullscreen">
+        </iframe>
+      </div>
+      
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
