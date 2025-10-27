@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Relatório Lab 1 - Processamento de Vídeo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+</head>
+<body class="bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <i class="bi bi-arrow-left"></i> Voltar
+            </a>
+        </div>
+    </nav>
+
+    <div class="container py-4">
+        <header class="text-center mb-5">
+            <h1 class="display-4">Relatório Laboratório 1</h1>
+            <p class="lead text-muted">Processamento de Vídeo</p>
+        </header>
+
+        <!-- Link para documento completo -->
+        <div class="alert alert-primary mb-5" role="alert">
+            <div class="d-flex align-items-center">
+                <div class="flex-shrink-0">
+                    <i class="bi bi-file-earmark-word fs-2 me-3"></i>
+                </div>
+                <div class="flex-grow-1">
+                    <h4 class="alert-heading mb-2">Documento Completo</h4>
+                    <p class="mb-0">
+                        Acesse a versão completa deste relatório no Microsoft Word:
+                        <a href="https://alunoufabcedu-my.sharepoint.com/:w:/g/personal/monteiro_g_aluno_ufabc_edu_br/EeZZ_33EUwZGrKSwR6ji_yYBr63ZUdCD02GtRmNYeSHX_g?e=npxWEj"
+                           class="alert-link"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            <i class="bi bi-box-arrow-up-right"></i> Abrir no SharePoint
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 1. Introdução -->
+        <section class="mb-5">
+            <h2 class="h3 mb-3">1. Introdução</h2>
+            <div class="card">
+                <div class="card-body">
+                    <p>Este relatório documenta os procedimentos e resultados do Laboratório 1 da disciplina de Processamento de Vídeo, cujo objetivo principal foi iniciar os trabalhos com a biblioteca OpenCV e estabelecer a base para o desenvolvimento de tarefas de visão computacional.</p>
+                    <p>O experimento focou na preparação e configuração do ambiente, no estudo dos comandos fundamentais de entrada e saída de imagens e vídeos a partir de arquivos e na implementação de scripts para captura de mídia utilizando a webcam.</p>
+                    <p>Este documento visa servir como referência técnica para a equipe sobre a programação de manipulação de mídias e câmeras.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Fundamentos Básicos -->
+        <section class="mb-5">
+            <h2 class="h3 mb-3">2. Fundamentos Básicos</h2>
+            <div class="card">
+                <div class="card-body">
+                    <p>
+                        O processamento de vídeo e imagem se baseia na manipulação de dados em formato de matriz, sendo a biblioteca OpenCV a ferramenta central, responsável por fornecer as rotinas de Entrada/Saída.
+                    </p>
+                    <p>
+                        No OpenCV, uma imagem estática é carregada como uma matriz NumPy, onde cada elemento é um pixel de cor, sendo o padrão de canais o BGR (Azul, Verde, Vermelho).
+                    </p>
+                    <p>
+                        Já o vídeo é tratado como uma sequência de imagens estáticas, chamadas de frames, que são processadas individualmente em um loop através do objeto `cv2.VideoCapture` e exibidas na tela a uma taxa de FPS (Frames por Segundo), métrica fundamental para a avaliação do desempenho de qualquer algoritmo de processamento em tempo real.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Materiais e Métodos -->
+        <section class="mb-5">
+            <h2 class="h3 mb-3">3. Materiais e Métodos</h2>
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="h5">3.1 Ambiente de Desenvolvimento</h4>
+                    <div class="ambiente-dev">
+                        <!-- 1. Ubuntu -->
+                        <div class="tool-section mb-4">
+                            <h5 class="h6 fw-bold">1. Ubuntu (Linux OS)</h5>
+                            <p><strong>O que é:</strong> Uma distribuição Linux de código aberto.</p>
+                            <p><strong>Finalidade:</strong> Fornece o sistema operacional e o ambiente de desenvolvimento onde todas as ferramentas serão instaladas e executadas.</p>
+                        </div>
+
+                        <!-- 2. Terminal -->
+                        <div class="tool-section mb-4">
+                            <h5 class="h6 fw-bold">2. Terminal (Linux Shell)</h5>
+                            <p><strong>O que é:</strong> Interface de linha de comando (CLI).</p>
+                            <p><strong>Finalidade:</strong> Utilizado para executar comandos do sistema, gerenciar ambientes, instalar softwares e rodar programas.</p>
+                        </div>
+
+                        <!-- 3. Conda/Miniconda3 -->
+                        <div class="tool-section mb-4">
+                            <h5 class="h6 fw-bold">3. Conda / Miniconda3</h5>
+                            <p><strong>O que é:</strong> Miniconda é um gerenciador de pacotes e ambientes leve para Python.</p>
+                            <p><strong>Finalidade:</strong></p>
+                            <ul>
+                                <li>Gerenciar versões do Python e suas dependências.</li>
+                                <li>Criar ambientes isolados (como o PV25) para evitar conflitos entre projetos.</li>
+                            </ul>
+                        </div>
+
+                        <!-- 4. OpenCV -->
+                        <div class="tool-section mb-4">
+                            <h5 class="h6 fw-bold">4. OpenCV</h5>
+                            <p><strong>O que é:</strong> Biblioteca de Visão Computacional de Código Aberto.</p>
+                            <p><strong>Finalidade:</strong> Principal biblioteca usada para tarefas de visão computacional e processamento de imagens/vídeos (detecção de objetos, transformações, extração de características etc.).</p>
+                            <p><strong>Variantes:</strong></p>
+                            <ul>
+                                <li><strong>OpenCV (compilado do código-fonte):</strong> Instalação completa com suporte a C++ e Python.</li>
+                                <li><strong>OpenCV-Contrib:</strong> Módulos extras desenvolvidos pela comunidade (ex.: reconhecimento facial, SIFT, SURF).</li>
+                                <li><strong>opencv-python (pip):</strong> Pacote pré-compilado do OpenCV para Python.</li>
+                                <li><strong>opencv-contrib-python (pip):</strong> Adiciona os módulos extras à instalação em Python.</li>
+                            </ul>
+                        </div>
+
+                        <!-- 5. Ferramentas de Compilação -->
+                        <div class="tool-section mb-4">
+                            <h5 class="h6 fw-bold">5. Ferramentas de Compilação e Dependências</h5>
+                            <p>Essenciais para compilar e executar o OpenCV a partir do código-fonte:</p>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item"><strong>build-essential:</strong> Compilador e ferramentas básicas de compilação.</li>
+                                <li class="list-group-item"><strong>cmake:</strong> Configura e gera os arquivos de build do OpenCV.</li>
+                                <li class="list-group-item"><strong>git:</strong> Usado para clonar os repositórios do OpenCV.</li>
+                                <li class="list-group-item"><strong>pkg-config:</strong> Auxilia no gerenciamento de caminhos de bibliotecas e dependências.</li>
+                                <li class="list-group-item"><strong>libgtk-3-dev:</strong> Suporte de interface gráfica para exibição de imagens.</li>
+                                <li class="list-group-item"><strong>libavcodec-dev, libavformat-dev, libswscale-dev:</strong> Codecs de vídeo/áudio.</li>
+                                <li class="list-group-item"><strong>libjpeg-dev, libpng-dev, libtiff-dev:</strong> Suporte a formatos de imagem.</li>
+                                <li class="list-group-item"><strong>libxvidcore-dev, libx264-dev:</strong> Bibliotecas de codificação de vídeo.</li>
+                                <li class="list-group-item"><strong>gfortran, libatlas-base-dev:</strong> Aceleração matemática.</li>
+                                <li class="list-group-item"><strong>python3-dev, python3-numpy:</strong> Cabeçalhos Python + NumPy.</li>
+                                <li class="list-group-item"><strong>libtbb-dev:</strong> Suporte a multithreading.</li>
+                                <li class="list-group-item"><strong>libopenexr-dev:</strong> Suporte para imagens HDR.</li>
+                                <li class="list-group-item"><strong>libv4l-dev, libdc1394-dev:</strong> Suporte a captura de vídeo.</li>
+                                <li class="list-group-item"><strong>libgstreamer-dev:</strong> Suporte a streaming de vídeo.</li>
+                            </ul>
+                        </div>
+
+                        <!-- 6. pkg-config -->
+                        <div class="tool-section mb-4">
+                            <h5 class="h6 fw-bold">6. pkg-config</h5>
+                            <p><strong>O que é:</strong> Ferramenta auxiliar para configurar flags de compilação e linkagem de bibliotecas.</p>
+                            <p><strong>Finalidade:</strong> Verifica se o OpenCV está instalado e acessível (pkg-config --modversion opencv4).</p>
+                        </div>
+
+                        <!-- 7. Python -->
+                        <div class="tool-section mb-4">
+                            <h5 class="h6 fw-bold">7. Python e C++</h5>
+                            <p><strong>O que sao:</strong> Linguagens de programação usadas para rodar os scripts com OpenCV.</p>
+                            <p><strong>Finalidade:</strong> Fornece o ambiente de programação para desenvolver tarefas de visão computacional.</p>
+                        </div>
+
+                        <!-- 8. VLC Media Player -->
+                        <div class="tool-section mb-4">
+                            <h5 class="h6 fw-bold">9. VLC Media Player</h5>
+                            <p><strong>O que é:</strong> Reprodutor multimídia gratuito e de código aberto.</p>
+                            <p><strong>Finalidade:</strong> Permite visualizar vídeos e imagens fora do OpenCV, útil para testes e validação de resultados do processamento de vídeo.</p>
+                        </div>
+                    </div>
+
+                    <h4 class="h5 mt-4">3.2 Processamentos Basicos de Imagem</h4>
+                    <div class="experimental-steps">
+                        <!-- Step 1 -->
+                        <div class="step-card mb-4">
+                            <div class="card">
+                                <div class="card-header bg-light">
+                                    <h5 class="h6 mb-0">
+                                        A) Leitura de Imagem e visualizacao na tela
+                                    </h5>
+                                </div>
+                                <div class="card-body">
+                                    <p class="mb-0">
+                                        Inicialmente, utilizado o codigo fornecido pelo professor, visto abaixo:
+                                    </p>
+                                    <pre>
+                                        <code>
+                    import numpy as np
+                    import cv2 as cv
+
+                    img = cv.imread('messi5.jpg')
+
+                    cv.imshow('image',img)
+
+                    k = cv.waitKey(0)
+
+                    if k == ord('s'):
+                        cv.imwrite('messi5.png', img)
+
+                    if k == 27:         # wait for ESC key to exit
+                        cv.destroyAllWindows()
+
+                                        </code>
+                                    </pre>
+
+                                    <ul class="list-unstyled mt-2">
+                                        <p>Alteracoes realizadas:</p>
+                                        <li><i class="bi bi-check-circle-fill text-success"></i> Salvamento do arquivo em .png, ao pressionar a tecla 's'</li>
+                                    </ul>
+
+                                    <div class="d-flex gap-3">
+                                        <div class="row justify-content-center">
+                                            JPG
+                                            <img src="./imagens/messi5.jpg" title="jpg (original)" alt="">
+                                        </div>
+
+                                        <div class="row justify-content-center">
+                                            PNG
+                                            <img src="./imagens/messi5.png" title="png (convertida)" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-header bg-light">
+                                    <h5 class="h6 mb-0">
+                                        B) Leitura e Gravacao de Video
+                                    </h5>
+                                </div>
+                                <div class="card-body">
+                                    <p>
+                                        Estudar o tutorial da biblioteca openCV e detalhar os 5 codigos fornecidos.
+                                    </p>
+
+                                    <h5 class="h6 mb-0">
+                                        video_write_to_file:
+                                    </h5>
+                                    <p>
+                                        Le video da pasta Resources e o reproduz, salvando-o frame a frame no arquivo output.avi,
+                                        ate que seja interrompido pressionando a letra 'q'.
+                                    </p>
+
+                                    <h5 class="h6 mb-0">
+                                        video_write_from_webcam:
+                                    </h5>
+                                    <p>
+                                        Le frames capturados pela webcam e os reproduz, salvando-os frame a frame no arquivo output.avi,
+                                        ate que seja interrompido pressionando a letra 'q'.
+                                    </p>
+
+                                    <h5 class="h6 mb-0">
+                                        video_read_from_webcam:
+                                    </h5>
+                                    <p>
+                                        Le frames capturados pela webcam e os reproduz, ate que seja interrompido pressionando a letra 'q'.
+                                    </p>
+
+                                    <h5 class="h6 mb-0">
+                                        video_read_from_file:
+                                    </h5>
+                                    <p>
+                                        Le video da pasta Resources e o reproduz, ate que seja interrompido pressionando a letra 'q'.
+                                    </p>
+
+                                    <h5 class="h6 mb-0">
+                                        video_read_from_image_sequence:
+                                    </h5>
+                                    <p>
+                                        Le uma serie de imagens da Resources e as reproduz sequencialmente de forma rapida, formando um video
+                                        ate que seja interrompido pressionando a letra 'q'.
+                                    </p>
+                                </div>
+
+                                <div class="card-body">
+                                    <p>
+                                        Para executar os programas utilizando por padrao o arquivo fornecido pelo moodle, basta ajustar o caminho ate o arquivo visto
+                                        nos programas *_from_file.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <h4 class="h5 mt-4">3.3 Procedimentos Experimentais</h4>
+                    <div class="experimental-steps">
+                        <!-- Step 1 -->
+                        <div class="step-card mb-4">
+                            <div class="card">
+                                <div class="card-header bg-light">
+                                    <h5 class="h6 mb-0">
+                                        <i class="bi bi-file-play"></i> Step 1 – Captura de vídeo local
+                                    </h5>
+                                </div>
+                                <div class="card-body">
+                                    <p class="mb-0">
+                                        Inicialmente, foi implementado um programa de leitura de vídeo a partir de um arquivo local utilizando a classe <code>cv2.VideoCapture</code>. Esse experimento teve como objetivo compreender o processo básico de:
+                                    </p>
+                                    <ul class="list-unstyled mt-2">
+                                        <li><i class="bi bi-check-circle-fill text-success"></i> Abertura e leitura de vídeos</li>
+                                        <li><i class="bi bi-check-circle-fill text-success"></i> Exibição de quadros</li>
+                                        <li><i class="bi bi-check-circle-fill text-success"></i> Manipulação de propriedades (FPS, total de quadros)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div class="step-card mb-4">
+                            <div class="card">
+                                <div class="card-header bg-light">
+                                    <h5 class="h6 mb-0">
+                                        <i class="bi bi-save"></i> Passo 2 – Gravação de vídeos
+                                    </h5>
+                                </div>
+                                <div class="card-body">
+                                    <p>Desenvolvimento de programa para gravação utilizando <code>cv2.VideoWriter</code></p>
+                                    <p class="mt-3 mb-0">Objetivo: Registrar e salvar transmissões para análise posterior.</p>
+                                </div>
+
+                                <div class="row justify-content-center mb-3">
+                                    <div class="col ms-5">
+                                        <h5 class="ms-5">Video curto - Marcelo</h5>
+                                        <video src="./videos/recording.mp4" controls></video>
+                                    </div>
+                                    <div class="col ms-5">
+                                        <h5 class="ms-5">Video curto - Carregador Portatil</h5>
+                                        <video src="./videos/recording_obj.mp4" controls></video>
+                                    </div>
+                                    <div class="col ms-5">
+                                        Vídeos Marcelo:
+                                        <p>
+                                            <a href="https://drive.google.com/file/d/1QZClbNjXocjy-5HPRso1TGaiNaD-91DI/view?usp=sharing">
+                                                output_from_web_cam.mp4
+                                            </a>
+                                            <a href="https://drive.google.com/file/d/12leABjHLr_4HTxrW-y65HC1Bxv5O03U_/view?usp=sharing">
+                                                output_video_from_web_cam_object
+                                            </a>
+                                        </p>
+                                    </div>
+                                    <div class="col ms-5">
+                                        Vídeos Gabriel:
+                                        <p>
+                                            <a href="https://alunoufabcedu-my.sharepoint.com/:v:/g/personal/monteiro_g_aluno_ufabc_edu_br/ERD20Ky8PaBHp_nncUBVTHUBfBrQHDe27cjFmtFphD99Wg?e=Hnsf2M">
+                                                output_video_from_web_cam.avi
+                                            </a>
+                                            <a href="https://alunoufabcedu-my.sharepoint.com/:v:/g/personal/monteiro_g_aluno_ufabc_edu_br/EXtwLW6TA61Jg8I1XIGBZ_QB8D2w8dHo5jTNVAR3ImuECw?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D&e=uxyHyU">
+                                                output_video_from_web_cam_fast 2.avi
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Resultados e Análises -->
+        <section class="mb-5">
+            <h2 class="h3 mb-3">4. Resultados e Análises</h2>
+            <div class="card">
+                <div class="card-body">
+                    <div class="results-analysis">
+                        <!-- 4.1 Resultados Obtidos -->
+                        <div class="results-section mb-4">
+                            <h4 class="h5 mb-3">4.1 Resultados Obtidos</h4>
+                            <div class="row g-4">
+                                <!-- Resultado 1 -->
+                                <div class="col-md-6">
+                                    <div class="card h-100">
+                                        <div class="card-header bg-success text-white">
+                                            <i class="bi bi-file-play"></i> Leitura de vídeos locais
+                                        </div>
+                                        <div class="card-body">
+                                            <p class="card-text">
+                                                Foi possível reproduzir vídeos e extrair informações como FPS e número de quadros.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <!-- Resultado 3 -->
+                                <div class="col-md-6">
+                                    <div class="card h-100">
+                                        <div class="card-header bg-info text-white">
+                                            <i class="bi bi-save"></i> Gravação
+                                        </div>
+                                        <div class="card-body">
+                                            <p class="card-text">
+                                                O vídeo capturado foi salvo no formato .avi, com qualidade satisfatória e sincronização estável entre captura e gravação.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Resultado 4 -->
+                                <div class="col-md-6">
+                                    <div class="card h-100">
+                                        <div class="card-header bg-warning">
+                                            <i class="bi bi-images"></i> Sequência de imagens
+                                        </div>
+                                        <div class="card-body">
+                                            <p class="card-text">
+                                                O processamento ocorreu sem perdas visuais perceptíveis, demonstrando que o OpenCV trata sequências de imagens de forma eficiente.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 4.2 Análise dos Resultados -->
+                        <div class="analysis-section">
+                            <h4 class="h5 mb-3">4.2 Análise dos Resultados</h4>
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="findings-list">
+                                        <div class="finding-item mb-3 p-3 border-start border-4 border-primary">
+                                            <h6 class="mb-2"><i class="bi bi-gear-fill"></i> Versatilidade do VideoCapture</h6>
+                                            <p class="mb-0">O <code>cv2.VideoCapture</code> é versátil, podendo receber dados de diferentes fontes (arquivo, câmera, RTMP, sequência de imagens).</p>
+                                        </div>
+
+                                        <div class="finding-item mb-3 p-3 border-start border-4 border-success">
+                                            <h6 class="mb-2"><i class="bi bi-speedometer"></i> Desempenho</h6>
+                                            <p class="mb-0">O desempenho depende fortemente do frame rate e do tempo de espera configurado em <code>cv2.waitKey()</code>.</p>
+                                        </div>
+
+                                        <div class="finding-item mb-3 p-3 border-start border-4 border-info">
+                                            <h6 class="mb-2"><i class="bi bi-camera-reels"></i> VideoWriter</h6>
+                                            <p class="mb-0">O <code>cv2.VideoWriter</code> requer que a taxa de quadros e o tamanho dos quadros sejam compatíveis com a fonte de entrada.</p>
+                                        </div>
+
+                                        <div class="finding-item mb-3 p-3 border-start border-4 border-secondary">
+                                            <h6 class="mb-2"><i class="bi bi-file-earmark-code"></i> Formatos e Codecs</h6>
+                                            <p class="mb-0">O uso de formatos padronizados (ex.: MJPG) e caminhos corretos de escrita evitou erros relacionados a codecs e permissões.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Conclusões -->
+        <section class="mb-5">
+            <h2 class="h3 mb-3">5. Conclusões e Comentários Finais</h2>
+                <div class="card">
+                    <div class="card-body">
+                        <!-- Introdução da Conclusão -->
+                        <div class="conclusion-intro mb-4">
+                            <p class="lead">
+                                O experimento permitiu compreender de forma prática os fundamentos da captura,
+                                exibição e gravação de imagens e vídeos com OpenCV.
+                            </p>
+                        </div>
+
+                        <!-- Lições Aprendidas -->
+                        <div class="lessons-learned mb-4">
+                            <h4 class="h5 mb-3">
+                                <i class="bi bi-lightbulb"></i> Principais Lições Aprendidas
+                            </h4>
+                            <div class="row g-4">
+                                <!-- Lição 1 -->
+                                <div class="col-md-6">
+                                    <div class="card h-100 border-primary">
+                                        <div class="card-body">
+                                            <h6 class="card-title">
+                                                <i class="bi bi-shield-check"></i> Verificação de Retorno
+                                            </h6>
+                                            <p class="card-text">
+                                                A importância de verificar o retorno (<code>ret</code>) das funções
+                                                de captura para evitar falhas silenciosas.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Lição 2 -->
+                                <div class="col-md-6">
+                                    <div class="card h-100 border-success">
+                                        <div class="card-body">
+                                            <h6 class="card-title">
+                                                <i class="bi bi-recycle"></i> Gerenciamento de Recursos
+                                            </h6>
+                                            <p class="card-text">
+                                                A necessidade de liberar recursos (<code>release()</code>) ao final
+                                                da execução para evitar travamentos.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Lição 3 -->
+                                <div class="col-md-6">
+                                    <div class="card h-100 border-info">
+                                        <div class="card-body">
+                                            <h6 class="card-title">
+                                                <i class="bi bi-diagram-3"></i> Fluxos de Dados
+                                            </h6>
+                                            <p class="card-text">
+                                                A diferença entre fluxos locais e remotos, principalmente quanto
+                                                à latência e estabilidade.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Lição 4 -->
+                                <div class="col-md-6">
+                                    <div class="card h-100 border-warning">
+                                        <div class="card-body">
+                                            <h6 class="card-title">
+                                                <i class="bi bi-camera-reels"></i> Parâmetros de Gravação
+                                            </h6>
+                                            <p class="card-text">
+                                                O papel do <code>cv2.VideoWriter</code> na gravação e a influência
+                                                dos parâmetros de codec e FPS na qualidade final.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Considerações Finais -->
+                        <div class="final-considerations mt-4">
+                            <div class="alert alert-success" role="alert">
+                                <h4 class="alert-heading">
+                                    <i class="bi bi-arrow-right-circle"></i> Aplicações Futuras
+                                </h4>
+                                <p class="mb-0">
+                                    De modo geral, os programas desenvolvidos podem servir como base para futuras
+                                    aplicações de visão computacional, como:
+                                </p>
+                                <ul class="mt-2 mb-0">
+                                    <li>Análise de movimento</li>
+                                    <li>Detecção de objetos</li>
+                                    <li>Transmissão de vídeo em tempo real</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </section>
+    </div>
+
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container text-center">
+            <p class="mb-0">© 2025 - Laboratório de Processamento de Vídeo</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
