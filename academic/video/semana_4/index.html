@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Relatório Lab 1 - Processamento de Vídeo</title>
+    <title>Relatório Lab 4 - Processamento de Vídeo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
 </head>
@@ -18,39 +18,19 @@
 
     <div class="container py-4">
         <header class="text-center mb-5">
-            <h1 class="display-4">Relatório Laboratório 1</h1>
-            <p class="lead text-muted">Processamento de Vídeo</p>
+            <h1 class="display-4">Relatório Laboratório 4</h1>
+            <p class="lead text-muted">Histogramas e Thresholding</p>
         </header>
-
-        <!-- Link para documento completo -->
-        <div class="alert alert-primary mb-5" role="alert">
-            <div class="d-flex align-items-center">
-                <div class="flex-shrink-0">
-                    <i class="bi bi-file-earmark-word fs-2 me-3"></i>
-                </div>
-                <div class="flex-grow-1">
-                    <h4 class="alert-heading mb-2">Documento Completo</h4>
-                    <p class="mb-0">
-                        Acesse a versão completa deste relatório no Microsoft Word:
-                        <a href="https://alunoufabcedu-my.sharepoint.com/:w:/g/personal/monteiro_g_aluno_ufabc_edu_br/EeZZ_33EUwZGrKSwR6ji_yYBr63ZUdCD02GtRmNYeSHX_g?e=npxWEj"
-                           class="alert-link"
-                           target="_blank"
-                           rel="noopener noreferrer">
-                            <i class="bi bi-box-arrow-up-right"></i> Abrir no SharePoint
-                        </a>
-                    </p>
-                </div>
-            </div>
-        </div>
 
         <!-- 1. Introdução -->
         <section class="mb-5">
             <h2 class="h3 mb-3">1. Introdução</h2>
             <div class="card">
                 <div class="card-body">
-                    <p>Este relatório documenta os procedimentos e resultados do Laboratório 1 da disciplina de Processamento de Vídeo, cujo objetivo principal foi iniciar os trabalhos com a biblioteca OpenCV e estabelecer a base para o desenvolvimento de tarefas de visão computacional.</p>
-                    <p>O experimento focou na preparação e configuração do ambiente, no estudo dos comandos fundamentais de entrada e saída de imagens e vídeos a partir de arquivos e na implementação de scripts para captura de mídia utilizando a webcam.</p>
-                    <p>Este documento visa servir como referência técnica para a equipe sobre a programação de manipulação de mídias e câmeras.</p>
+                    <p>
+                        Este relatório documenta o procedimento de estudo teorico e pratico da utilizacao de histogramas e thresholding para processamento de imagens utilizando a biblioteca openCV e linguagem c++.
+                        Parte-se do pressuposto que relatorios anteriores foram estudados e ambiente de programacao esta configurado.
+                    </p>
                 </div>
             </div>
         </section>
@@ -61,13 +41,11 @@
             <div class="card">
                 <div class="card-body">
                     <p>
-                        O processamento de vídeo e imagem se baseia na manipulação de dados em formato de matriz, sendo a biblioteca OpenCV a ferramenta central, responsável por fornecer as rotinas de Entrada/Saída.
-                    </p>
-                    <p>
-                        No OpenCV, uma imagem estática é carregada como uma matriz NumPy, onde cada elemento é um pixel de cor, sendo o padrão de canais o BGR (Azul, Verde, Vermelho).
-                    </p>
-                    <p>
-                        Já o vídeo é tratado como uma sequência de imagens estáticas, chamadas de frames, que são processadas individualmente em um loop através do objeto `cv2.VideoCapture` e exibidas na tela a uma taxa de FPS (Frames por Segundo), métrica fundamental para a avaliação do desempenho de qualquer algoritmo de processamento em tempo real.
+                        O procedimento de criacao de um histograma a partir de uma imagem se baseia em categorizar cada pixel da imagem em um Bin (ou categoria) de
+                        um Histograma baseado em sua intensidade, podendo ser em escala de cinza ou em cada um de seus canais de cor.
+
+                        O procedimento de Thresholding se baseia em aplicar uma funcao degrau (ou suas similares e variacoes) a cada pixel de uma imagem, com o objetivo
+                        de manter ou remover elementos para dar enfase a atributos desejados.
                     </p>
                 </div>
             </div>
@@ -75,276 +53,59 @@
 
         <!-- 3. Materiais e Métodos -->
         <section class="mb-5">
-            <h2 class="h3 mb-3">3. Materiais e Métodos</h2>
+            <h2 class="h3 mb-3">3. Estudo e exemplos utilizados</h2>
             <div class="card">
                 <div class="card-body">
-                    <h4 class="h5">3.1 Ambiente de Desenvolvimento</h4>
-                    <div class="ambiente-dev">
-                        <!-- 1. Ubuntu -->
-                        <div class="tool-section mb-4">
-                            <h5 class="h6 fw-bold">1. Ubuntu (Linux OS)</h5>
-                            <p><strong>O que é:</strong> Uma distribuição Linux de código aberto.</p>
-                            <p><strong>Finalidade:</strong> Fornece o sistema operacional e o ambiente de desenvolvimento onde todas as ferramentas serão instaladas e executadas.</p>
-                        </div>
+                    <h3>Exemplos fornecidos pelo roteiro:</h3>
 
-                        <!-- 2. Terminal -->
-                        <div class="tool-section mb-4">
-                            <h5 class="h6 fw-bold">2. Terminal (Linux Shell)</h5>
-                            <p><strong>O que é:</strong> Interface de linha de comando (CLI).</p>
-                            <p><strong>Finalidade:</strong> Utilizado para executar comandos do sistema, gerenciar ambientes, instalar softwares e rodar programas.</p>
-                        </div>
+                    <p>
+                        Exemplos de tutoriais fornecidos pelo roteiro de atividade pratica foram seguidos e estudados, de forma que
+                        codigos fornecidos por eles foram utilizados como a base para o desenvolvimento de items subsequentes.
 
-                        <!-- 3. Conda/Miniconda3 -->
-                        <div class="tool-section mb-4">
-                            <h5 class="h6 fw-bold">3. Conda / Miniconda3</h5>
-                            <p><strong>O que é:</strong> Miniconda é um gerenciador de pacotes e ambientes leve para Python.</p>
-                            <p><strong>Finalidade:</strong></p>
-                            <ul>
-                                <li>Gerenciar versões do Python e suas dependências.</li>
-                                <li>Criar ambientes isolados (como o PV25) para evitar conflitos entre projetos.</li>
-                            </ul>
-                        </div>
+                        Artigos podem ser acessados atraves dos links abaixo, que foram replicados do roteiro.
+                    </p>
 
-                        <!-- 4. OpenCV -->
-                        <div class="tool-section mb-4">
-                            <h5 class="h6 fw-bold">4. OpenCV</h5>
-                            <p><strong>O que é:</strong> Biblioteca de Visão Computacional de Código Aberto.</p>
-                            <p><strong>Finalidade:</strong> Principal biblioteca usada para tarefas de visão computacional e processamento de imagens/vídeos (detecção de objetos, transformações, extração de características etc.).</p>
-                            <p><strong>Variantes:</strong></p>
-                            <ul>
-                                <li><strong>OpenCV (compilado do código-fonte):</strong> Instalação completa com suporte a C++ e Python.</li>
-                                <li><strong>OpenCV-Contrib:</strong> Módulos extras desenvolvidos pela comunidade (ex.: reconhecimento facial, SIFT, SURF).</li>
-                                <li><strong>opencv-python (pip):</strong> Pacote pré-compilado do OpenCV para Python.</li>
-                                <li><strong>opencv-contrib-python (pip):</strong> Adiciona os módulos extras à instalação em Python.</li>
-                            </ul>
-                        </div>
+                    <ul>
+                        <li>
+                            <b>Equalizacao de Histogramas</b> por openCV <br>
+                            <a class="btn btn-primary" href="https://docs.opencv.org/4.x/d4/d1b/tutorial_histogram_equalization.html">Link</a>
+                        </li>
+                        <li>
+                            <b>Calculo de Histogramas e Limiarizacao/Binarizacao</b> por openCV <br>
+                            <a class="btn btn-primary" href="https://docs.opencv.org/4.x/d8/dbc/tutorial_histogram_calculation.html">Link</a>
+                        </li>
+                        <li>
+                            <b>Basic Thresholding Operations</b> por openCV <br>
+                            <a class="btn btn-primary" href="https://docs.opencv.org/4.x/db/d8e/tutorial_threshold.html">Link</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
 
-                        <!-- 5. Ferramentas de Compilação -->
-                        <div class="tool-section mb-4">
-                            <h5 class="h6 fw-bold">5. Ferramentas de Compilação e Dependências</h5>
-                            <p>Essenciais para compilar e executar o OpenCV a partir do código-fonte:</p>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item"><strong>build-essential:</strong> Compilador e ferramentas básicas de compilação.</li>
-                                <li class="list-group-item"><strong>cmake:</strong> Configura e gera os arquivos de build do OpenCV.</li>
-                                <li class="list-group-item"><strong>git:</strong> Usado para clonar os repositórios do OpenCV.</li>
-                                <li class="list-group-item"><strong>pkg-config:</strong> Auxilia no gerenciamento de caminhos de bibliotecas e dependências.</li>
-                                <li class="list-group-item"><strong>libgtk-3-dev:</strong> Suporte de interface gráfica para exibição de imagens.</li>
-                                <li class="list-group-item"><strong>libavcodec-dev, libavformat-dev, libswscale-dev:</strong> Codecs de vídeo/áudio.</li>
-                                <li class="list-group-item"><strong>libjpeg-dev, libpng-dev, libtiff-dev:</strong> Suporte a formatos de imagem.</li>
-                                <li class="list-group-item"><strong>libxvidcore-dev, libx264-dev:</strong> Bibliotecas de codificação de vídeo.</li>
-                                <li class="list-group-item"><strong>gfortran, libatlas-base-dev:</strong> Aceleração matemática.</li>
-                                <li class="list-group-item"><strong>python3-dev, python3-numpy:</strong> Cabeçalhos Python + NumPy.</li>
-                                <li class="list-group-item"><strong>libtbb-dev:</strong> Suporte a multithreading.</li>
-                                <li class="list-group-item"><strong>libopenexr-dev:</strong> Suporte para imagens HDR.</li>
-                                <li class="list-group-item"><strong>libv4l-dev, libdc1394-dev:</strong> Suporte a captura de vídeo.</li>
-                                <li class="list-group-item"><strong>libgstreamer-dev:</strong> Suporte a streaming de vídeo.</li>
-                            </ul>
-                        </div>
+        <section class="mb-5">
+            <h2 class="h3 mb-3">4. Atividades Propostas</h2>
+            <div class="card">
+                <div class="card-body">
+                    <h3>4.1 Histogramas e Equalizacao em Imagens em escala da cinza</h3>
+                    <p>Especificacoes do programa:
+                        <ul>
+                            <li>Entrada: imagem colorida</li>
+                            <li>Saida: Imagem convetida para cinza</li>
+                            <li>Saida: Imagem em cinza equalizada</li>
+                            <li>Saida: Histograma da imagem em cinza</li>
+                            <li>Saida: Histograma da imagem equalizada</li>
+                        </ul>
+                    </p>
+                    <h4> Procedimento: </h4>
+                    <p>
+                        Para realizacao desta tarefa vamos nos basear nos codigos fornecidos pelos exemplos 2 e 1, nesta ordem. <br>
+                        O exemplo 2 fornece uma base para leitura de imagens e visualizacao de histogramas por canal. Nesta etapa de adaptacao,
+                        a imagem sera convertida em escala de cinza e sera mantido apenas um canal singular, assim sera possivel visualizar a imagem em escala de cinza e seu histograma.
+                        <br>
+                        O exemplo 1 fornece o modo de utilizacao da funcao de equalizacao da imagem, nos permitindo assim obter a imagem  equalizada, e repetir o procedimento anterior para obter seu histograma.
 
-                        <!-- 6. pkg-config -->
-                        <div class="tool-section mb-4">
-                            <h5 class="h6 fw-bold">6. pkg-config</h5>
-                            <p><strong>O que é:</strong> Ferramenta auxiliar para configurar flags de compilação e linkagem de bibliotecas.</p>
-                            <p><strong>Finalidade:</strong> Verifica se o OpenCV está instalado e acessível (pkg-config --modversion opencv4).</p>
-                        </div>
-
-                        <!-- 7. Python -->
-                        <div class="tool-section mb-4">
-                            <h5 class="h6 fw-bold">7. Python e C++</h5>
-                            <p><strong>O que sao:</strong> Linguagens de programação usadas para rodar os scripts com OpenCV.</p>
-                            <p><strong>Finalidade:</strong> Fornece o ambiente de programação para desenvolver tarefas de visão computacional.</p>
-                        </div>
-
-                        <!-- 8. VLC Media Player -->
-                        <div class="tool-section mb-4">
-                            <h5 class="h6 fw-bold">9. VLC Media Player</h5>
-                            <p><strong>O que é:</strong> Reprodutor multimídia gratuito e de código aberto.</p>
-                            <p><strong>Finalidade:</strong> Permite visualizar vídeos e imagens fora do OpenCV, útil para testes e validação de resultados do processamento de vídeo.</p>
-                        </div>
-                    </div>
-
-                    <h4 class="h5 mt-4">3.2 Processamentos Basicos de Imagem</h4>
-                    <div class="experimental-steps">
-                        <!-- Step 1 -->
-                        <div class="step-card mb-4">
-                            <div class="card">
-                                <div class="card-header bg-light">
-                                    <h5 class="h6 mb-0">
-                                        A) Leitura de Imagem e visualizacao na tela
-                                    </h5>
-                                </div>
-                                <div class="card-body">
-                                    <p class="mb-0">
-                                        Inicialmente, utilizado o codigo fornecido pelo professor, visto abaixo:
-                                    </p>
-                                    <pre>
-                                        <code>
-                    import numpy as np
-                    import cv2 as cv
-
-                    img = cv.imread('messi5.jpg')
-
-                    cv.imshow('image',img)
-
-                    k = cv.waitKey(0)
-
-                    if k == ord('s'):
-                        cv.imwrite('messi5.png', img)
-
-                    if k == 27:         # wait for ESC key to exit
-                        cv.destroyAllWindows()
-
-                                        </code>
-                                    </pre>
-
-                                    <ul class="list-unstyled mt-2">
-                                        <p>Alteracoes realizadas:</p>
-                                        <li><i class="bi bi-check-circle-fill text-success"></i> Salvamento do arquivo em .png, ao pressionar a tecla 's'</li>
-                                    </ul>
-
-                                    <div class="d-flex gap-3">
-                                        <div class="row justify-content-center">
-                                            JPG
-                                            <img src="./imagens/messi5.jpg" title="jpg (original)" alt="">
-                                        </div>
-
-                                        <div class="row justify-content-center">
-                                            PNG
-                                            <img src="./imagens/messi5.png" title="png (convertida)" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-header bg-light">
-                                    <h5 class="h6 mb-0">
-                                        B) Leitura e Gravacao de Video
-                                    </h5>
-                                </div>
-                                <div class="card-body">
-                                    <p>
-                                        Estudar o tutorial da biblioteca openCV e detalhar os 5 codigos fornecidos.
-                                    </p>
-
-                                    <h5 class="h6 mb-0">
-                                        video_write_to_file:
-                                    </h5>
-                                    <p>
-                                        Le video da pasta Resources e o reproduz, salvando-o frame a frame no arquivo output.avi,
-                                        ate que seja interrompido pressionando a letra 'q'.
-                                    </p>
-
-                                    <h5 class="h6 mb-0">
-                                        video_write_from_webcam:
-                                    </h5>
-                                    <p>
-                                        Le frames capturados pela webcam e os reproduz, salvando-os frame a frame no arquivo output.avi,
-                                        ate que seja interrompido pressionando a letra 'q'.
-                                    </p>
-
-                                    <h5 class="h6 mb-0">
-                                        video_read_from_webcam:
-                                    </h5>
-                                    <p>
-                                        Le frames capturados pela webcam e os reproduz, ate que seja interrompido pressionando a letra 'q'.
-                                    </p>
-
-                                    <h5 class="h6 mb-0">
-                                        video_read_from_file:
-                                    </h5>
-                                    <p>
-                                        Le video da pasta Resources e o reproduz, ate que seja interrompido pressionando a letra 'q'.
-                                    </p>
-
-                                    <h5 class="h6 mb-0">
-                                        video_read_from_image_sequence:
-                                    </h5>
-                                    <p>
-                                        Le uma serie de imagens da Resources e as reproduz sequencialmente de forma rapida, formando um video
-                                        ate que seja interrompido pressionando a letra 'q'.
-                                    </p>
-                                </div>
-
-                                <div class="card-body">
-                                    <p>
-                                        Para executar os programas utilizando por padrao o arquivo fornecido pelo moodle, basta ajustar o caminho ate o arquivo visto
-                                        nos programas *_from_file.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <h4 class="h5 mt-4">3.3 Procedimentos Experimentais</h4>
-                    <div class="experimental-steps">
-                        <!-- Step 1 -->
-                        <div class="step-card mb-4">
-                            <div class="card">
-                                <div class="card-header bg-light">
-                                    <h5 class="h6 mb-0">
-                                        <i class="bi bi-file-play"></i> Step 1 – Captura de vídeo local
-                                    </h5>
-                                </div>
-                                <div class="card-body">
-                                    <p class="mb-0">
-                                        Inicialmente, foi implementado um programa de leitura de vídeo a partir de um arquivo local utilizando a classe <code>cv2.VideoCapture</code>. Esse experimento teve como objetivo compreender o processo básico de:
-                                    </p>
-                                    <ul class="list-unstyled mt-2">
-                                        <li><i class="bi bi-check-circle-fill text-success"></i> Abertura e leitura de vídeos</li>
-                                        <li><i class="bi bi-check-circle-fill text-success"></i> Exibição de quadros</li>
-                                        <li><i class="bi bi-check-circle-fill text-success"></i> Manipulação de propriedades (FPS, total de quadros)</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Step 2 -->
-                        <div class="step-card mb-4">
-                            <div class="card">
-                                <div class="card-header bg-light">
-                                    <h5 class="h6 mb-0">
-                                        <i class="bi bi-save"></i> Passo 2 – Gravação de vídeos
-                                    </h5>
-                                </div>
-                                <div class="card-body">
-                                    <p>Desenvolvimento de programa para gravação utilizando <code>cv2.VideoWriter</code></p>
-                                    <p class="mt-3 mb-0">Objetivo: Registrar e salvar transmissões para análise posterior.</p>
-                                </div>
-
-                                <div class="row justify-content-center mb-3">
-                                    <div class="col ms-5">
-                                        <h5 class="ms-5">Video curto - Marcelo</h5>
-                                        <video src="./videos/recording.mp4" controls></video>
-                                    </div>
-                                    <div class="col ms-5">
-                                        <h5 class="ms-5">Video curto - Carregador Portatil</h5>
-                                        <video src="./videos/recording_obj.mp4" controls></video>
-                                    </div>
-                                    <div class="col ms-5">
-                                        Vídeos Marcelo:
-                                        <p>
-                                            <a href="https://drive.google.com/file/d/1QZClbNjXocjy-5HPRso1TGaiNaD-91DI/view?usp=sharing">
-                                                output_from_web_cam.mp4
-                                            </a>
-                                            <a href="https://drive.google.com/file/d/12leABjHLr_4HTxrW-y65HC1Bxv5O03U_/view?usp=sharing">
-                                                output_video_from_web_cam_object
-                                            </a>
-                                        </p>
-                                    </div>
-                                    <div class="col ms-5">
-                                        Vídeos Gabriel:
-                                        <p>
-                                            <a href="https://alunoufabcedu-my.sharepoint.com/:v:/g/personal/monteiro_g_aluno_ufabc_edu_br/ERD20Ky8PaBHp_nncUBVTHUBfBrQHDe27cjFmtFphD99Wg?e=Hnsf2M">
-                                                output_video_from_web_cam.avi
-                                            </a>
-                                            <a href="https://alunoufabcedu-my.sharepoint.com/:v:/g/personal/monteiro_g_aluno_ufabc_edu_br/EXtwLW6TA61Jg8I1XIGBZ_QB8D2w8dHo5jTNVAR3ImuECw?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D&e=uxyHyU">
-                                                output_video_from_web_cam_fast 2.avi
-                                            </a>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    </p>
                 </div>
             </div>
         </section>
