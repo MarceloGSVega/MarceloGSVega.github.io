@@ -2,23 +2,23 @@ import cv2
 import time
 import os
 
-url = "https://cameras.santoandre.sp.gov.br/coi04/ID_573"
-camera_id = 655
+source_page = "https://portais.santoandre.sp.gov.br/defesacivil/monitoramento-rios-e-corregos/"
+url = "https://cameras.santoandre.sp.gov.br/coi04/ID_655"
+camera_id = 655 # Em frente a universidade
 outra_camera = 573
 OUTPUT_DIR = "imagens"
-INTERVAL_SECONDS = 20  # Save one screenshot every 20 seconds
+INTERVAL_SECONDS = 20
 
 cap = cv2.VideoCapture(url)
 
+### Observations:
+### Camera selected has 9 viewpoints and stays around 5s in each
+###
 
 last_saved = 0
 while True:
     ret, frame = cap.read()
-    if not ret:
-        print("Failed to grab frame. Retrying...")
-        continue
 
-    # Display the frame in a local window
     cv2.imshow("Avenida dos Estados", frame)
 
     # Save a screenshot every INTERVAL_SECONDS
