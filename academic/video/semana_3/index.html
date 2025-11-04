@@ -18,7 +18,7 @@
 
     <div class="container py-4">
         <header class="text-center mb-5">
-            <h1 class="display-4">Relatório Laboratório 1</h1>
+            <h1 class="display-4">Relatório Laboratório 3</h1>
             <p class="lead text-muted">Processamento de Vídeo</p>
         </header>
 
@@ -32,7 +32,7 @@
                     <h4 class="alert-heading mb-2">Documento Completo</h4>
                     <p class="mb-0">
                         Acesse a versão completa deste relatório no Microsoft Word:
-                        <a href="https://alunoufabcedu-my.sharepoint.com/:w:/g/personal/monteiro_g_aluno_ufabc_edu_br/EeZZ_33EUwZGrKSwR6ji_yYBr63ZUdCD02GtRmNYeSHX_g?e=npxWEj"
+                        <a href="https://alunoufabcedu-my.sharepoint.com/:w:/g/personal/monteiro_g_aluno_ufabc_edu_br/EWeDv7k0pfhFk_IOT4nyLTABjOnnUaFoDljxj77CZYz1iw?e=0ebCLl"
                            class="alert-link"
                            target="_blank"
                            rel="noopener noreferrer">
@@ -55,6 +55,43 @@
             </div>
         </section>
 
+        <!-- GitHub Repository -->
+        <section class="mb-5">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="bi bi-github fs-2 me-3"></i>
+                        <h2 class="h3 mb-0">Repositório do Projeto</h2>
+                    </div>
+                    <p class="mb-4">Todo o código fonte e materiais utilizados neste projeto estão disponíveis em nosso repositório GitHub:</p>
+                    
+                    <div class="alert alert-info d-flex align-items-center" role="alert">
+                        <i class="bi bi-link-45deg fs-4 me-3"></i>
+                        <div>
+                            <strong>Link do Repositório:</strong>
+                            <a href="https://github.com/brMonteiro-G/video-processing-lab-ufabc" 
+                               class="alert-link ms-2" 
+                               target="_blank" 
+                               rel="noopener noreferrer">
+                                Video-processing-lab
+                                <i class="bi bi-box-arrow-up-right ms-1"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="mt-3">
+                        <h5 class="h6">Conteúdo do Repositório:</h5>
+                        <ul class="list-unstyled">
+                            <li><i class="bi bi-code-square text-success me-2"></i>Códigos fonte dos experimentos</li>
+                            <li><i class="bi bi-file-earmark-text text-primary me-2"></i>Documentação e relatórios</li>
+                            <li><i class="bi bi-camera text-info me-2"></i>Imagens e vídeos dos experimentos</li>
+                            <li><i class="bi bi-diagram-3 text-warning me-2"></i>Estrutura do projeto web</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- 2. Fundamentos Básicos -->
         <section class="mb-5">
             <h2 class="h3 mb-3">2. Fundamentos Básicos</h2>
@@ -63,11 +100,26 @@
                     <p>
                         O processamento de vídeo e imagem se baseia na manipulação de dados em formato de matriz, sendo a biblioteca OpenCV a ferramenta central, responsável por fornecer as rotinas de Entrada/Saída.
                     </p>
+                    <h4 class="h5 mt-4">2.1 Espaços de Cores</h4>
                     <p>
-                        No OpenCV, uma imagem estática é carregada como uma matriz NumPy, onde cada elemento é um pixel de cor, sendo o padrão de canais o BGR (Azul, Verde, Vermelho).
+                        No OpenCV, uma imagem estática é carregada como uma matriz NumPy, onde cada elemento é um pixel de cor. Por padrão, o OpenCV usa o espaço de cores BGR (Azul, Verde, Vermelho), mas também suporta outros espaços de cores importantes:
                     </p>
+                    <ul>
+                        <li><strong>RGB (Red, Green, Blue):</strong> O espaço de cores mais comum, onde cada pixel é representado por três valores de intensidade.</li>
+                        <li><strong>HSV (Hue, Saturation, Value):</strong> Útil para segmentação por cor, pois separa a informação de cor (matiz) da saturação e do brilho.</li>
+
+                    </ul>
+
+                    <h4 class="h5 mt-4">2.2 Detecção de Bordas</h4>
                     <p>
-                        Já o vídeo é tratado como uma sequência de imagens estáticas, chamadas de frames, que são processadas individualmente em um loop através do objeto `cv2.VideoCapture` e exibidas na tela a uma taxa de FPS (Frames por Segundo), métrica fundamental para a avaliação do desempenho de qualquer algoritmo de processamento em tempo real.
+                        A detecção de bordas é uma técnica fundamental que identifica pontos em uma imagem onde a intensidade luminosa muda bruscamente. Os principais operadores incluem:
+                    </p>
+                    <ul>
+                        <li><strong>Canny:</strong> Um detector de bordas mais robusto que inclui múltiplas etapas de processamento.</li>
+                    </ul>
+                    
+                    <p>
+                        No vídeo, estas técnicas são aplicadas frame a frame, sendo cada quadro processado individualmente através do objeto `cv2.VideoCapture` e exibido na tela a uma taxa de FPS (Frames por Segundo), que é uma métrica fundamental para a avaliação do desempenho do processamento em tempo real.
                     </p>
                 </div>
             </div>
@@ -163,136 +215,85 @@
                         </div>
                     </div>
 
-                    <h4 class="h5 mt-4">3.2 Processamentos Basicos de Imagem</h4>
-                    <div class="experimental-steps">
-                        <!-- Step 1 -->
-                        <div class="step-card mb-4">
-                            <div class="card">
-                                <div class="card-header bg-light">
-                                    <h5 class="h6 mb-0">
-                                        A) Leitura de Imagem e visualizacao na tela
-                                    </h5>
-                                </div>
-                                <div class="card-body">
-                                    <p class="mb-0">
-                                        Inicialmente, utilizado o codigo fornecido pelo professor, visto abaixo:
-                                    </p>
-                                    <pre>
-                                        <code>
-                    import numpy as np
-                    import cv2 as cv
-
-                    img = cv.imread('messi5.jpg')
-
-                    cv.imshow('image',img)
-
-                    k = cv.waitKey(0)
-
-                    if k == ord('s'):
-                        cv.imwrite('messi5.png', img)
-
-                    if k == 27:         # wait for ESC key to exit
-                        cv.destroyAllWindows()
-
-                                        </code>
-                                    </pre>
-
-                                    <ul class="list-unstyled mt-2">
-                                        <p>Alteracoes realizadas:</p>
-                                        <li><i class="bi bi-check-circle-fill text-success"></i> Salvamento do arquivo em .png, ao pressionar a tecla 's'</li>
-                                    </ul>
-
-                                    <div class="d-flex gap-3">
-                                        <div class="row justify-content-center">
-                                            JPG
-                                            <img src="./imagens/messi5.jpg" title="jpg (original)" alt="">
-                                        </div>
-
-                                        <div class="row justify-content-center">
-                                            PNG
-                                            <img src="./imagens/messi5.png" title="png (convertida)" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-header bg-light">
-                                    <h5 class="h6 mb-0">
-                                        B) Leitura e Gravacao de Video
-                                    </h5>
-                                </div>
-                                <div class="card-body">
-                                    <p>
-                                        Estudar o tutorial da biblioteca openCV e detalhar os 5 codigos fornecidos.
-                                    </p>
-
-                                    <h5 class="h6 mb-0">
-                                        video_write_to_file:
-                                    </h5>
-                                    <p>
-                                        Le video da pasta Resources e o reproduz, salvando-o frame a frame no arquivo output.avi,
-                                        ate que seja interrompido pressionando a letra 'q'.
-                                    </p>
-
-                                    <h5 class="h6 mb-0">
-                                        video_write_from_webcam:
-                                    </h5>
-                                    <p>
-                                        Le frames capturados pela webcam e os reproduz, salvando-os frame a frame no arquivo output.avi,
-                                        ate que seja interrompido pressionando a letra 'q'.
-                                    </p>
-
-                                    <h5 class="h6 mb-0">
-                                        video_read_from_webcam:
-                                    </h5>
-                                    <p>
-                                        Le frames capturados pela webcam e os reproduz, ate que seja interrompido pressionando a letra 'q'.
-                                    </p>
-
-                                    <h5 class="h6 mb-0">
-                                        video_read_from_file:
-                                    </h5>
-                                    <p>
-                                        Le video da pasta Resources e o reproduz, ate que seja interrompido pressionando a letra 'q'.
-                                    </p>
-
-                                    <h5 class="h6 mb-0">
-                                        video_read_from_image_sequence:
-                                    </h5>
-                                    <p>
-                                        Le uma serie de imagens da Resources e as reproduz sequencialmente de forma rapida, formando um video
-                                        ate que seja interrompido pressionando a letra 'q'.
-                                    </p>
-                                </div>
-
-                                <div class="card-body">
-                                    <p>
-                                        Para executar os programas utilizando por padrao o arquivo fornecido pelo moodle, basta ajustar o caminho ate o arquivo visto
-                                        nos programas *_from_file.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+                
 
                     <h4 class="h5 mt-4">3.3 Procedimentos Experimentais</h4>
                     <div class="experimental-steps">
-                        <!-- Step 1 -->
+                        <!-- Step 1 - Color Detection System -->
                         <div class="step-card mb-4">
                             <div class="card">
                                 <div class="card-header bg-light">
                                     <h5 class="h6 mb-0">
-                                        <i class="bi bi-file-play"></i> Step 1 – Captura de vídeo local
+                                        <i class="bi bi-palette"></i> Sistema de Detecção Multicolorida
                                     </h5>
                                 </div>
                                 <div class="card-body">
-                                    <p class="mb-0">
-                                        Inicialmente, foi implementado um programa de leitura de vídeo a partir de um arquivo local utilizando a classe <code>cv2.VideoCapture</code>. Esse experimento teve como objetivo compreender o processo básico de:
+                                    <p>
+                                        Desenvolvemos um sistema avançado de detecção e rastreamento de objetos coloridos com as seguintes características:
                                     </p>
-                                    <ul class="list-unstyled mt-2">
-                                        <li><i class="bi bi-check-circle-fill text-success"></i> Abertura e leitura de vídeos</li>
-                                        <li><i class="bi bi-check-circle-fill text-success"></i> Exibição de quadros</li>
-                                        <li><i class="bi bi-check-circle-fill text-success"></i> Manipulação de propriedades (FPS, total de quadros)</li>
+                                    <h6 class="mt-3">Características Principais:</h6>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">
+                                            <i class="bi bi-eye text-primary"></i>
+                                            <strong>Detecção Múltipla:</strong> Identificação simultânea de objetos em vermelho, azul, verde e amarelo
+                                        </li>
+                                        <li class="list-group-item">
+                                            <i class="bi bi-sliders text-success"></i>
+                                            <strong>Controles Interativos:</strong> Interface com trackbars para ajuste fino dos parâmetros HSV
+                                        </li>
+                                        <li class="list-group-item">
+                                            <i class="bi bi-camera text-info"></i>
+                                            <strong>Captura e Gravação:</strong> Funcionalidades para salvar imagens (tecla 's') e gravar vídeos (teclas 'k'/'h')
+                                        </li>
+                                        <li class="list-group-item">
+                                            <i class="bi bi-mask text-warning"></i>
+                                            <strong>Máscaras e Contornos:</strong> Visualização de máscaras individuais e combinadas
+                                        </li>
                                     </ul>
+
+                                    <h6 class="mt-4">Implementação Técnica:</h6>
+                                    <pre class="bg-light p-3 mt-2" style="font-size: 0.85em;">
+# Definição das faixas de cores em HSV
+colors = {
+    'red': {
+        'ranges': [(0, 50, 50), (10, 255, 255)],
+        'ranges2': [(170, 50, 50), (180, 255, 255)]
+    },
+    'blue': {'ranges': [(100, 50, 50), (130, 255, 255)]},
+    'green': {'ranges': [(40, 50, 50), (80, 255, 255)]},
+    'yellow': {'ranges': [(20, 50, 50), (40, 255, 255)]}
+}</pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step 2 - Image Processing Pipeline -->
+                        <div class="step-card mb-4">
+                            <div class="card">
+                                <div class="card-header bg-light">
+                                    <h5 class="h6 mb-0">
+                                        <i class="bi bi-gear-wide-connected"></i> Pipeline de Processamento
+                                    </h5>
+                                </div>
+                                <div class="card-body">
+                                    <ol class="custom-list">
+                                        <li><strong>Captura de Vídeo:</strong> Leitura do stream RTMP local</li>
+                                        <li><strong>Conversão de Cor:</strong> Transformação BGR para HSV</li>
+                                        <li><strong>Detecção de Cor:</strong> Aplicação de máscaras HSV para cada cor</li>
+                                        <li><strong>Processamento de Contornos:</strong> Identificação e desenho de contornos</li>
+                                        <li><strong>Visualização:</strong> Exibição de resultados em múltiplas janelas</li>
+                                    </ol>
+
+                                    <div class="alert alert-info mt-3">
+                                        <i class="bi bi-info-circle-fill"></i>
+                                        <strong>Funcionalidades Especiais:</strong>
+                                        <ul class="mb-0 mt-2">
+                                            <li>Ajuste dinâmico dos parâmetros HSV via trackbars</li>
+                                            <li>Salvamento automático de frames com timestamp</li>
+                                            <li>Gravação simultânea do vídeo original e processado</li>
+                                            <li>Detecção especial para vermelho (dois ranges HSV)</li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -306,42 +307,11 @@
                                     </h5>
                                 </div>
                                 <div class="card-body">
-                                    <p>Desenvolvimento de programa para gravação utilizando <code>cv2.VideoWriter</code></p>
-                                    <p class="mt-3 mb-0">Objetivo: Registrar e salvar transmissões para análise posterior.</p>
+                                    <p>Desenvolvimento de programa para gravação para detecção multicolorida</p>
+                                    <p class="mt-3 mb-0">Vídeos em anexo no link Sharepoint no topo da página</p>
                                 </div>
 
-                                <div class="row justify-content-center mb-3">
-                                    <div class="col ms-5">
-                                        <h5 class="ms-5">Video curto - Marcelo</h5>
-                                        <video src="./videos/recording.mp4" controls></video>
-                                    </div>
-                                    <div class="col ms-5">
-                                        <h5 class="ms-5">Video curto - Carregador Portatil</h5>
-                                        <video src="./videos/recording_obj.mp4" controls></video>
-                                    </div>
-                                    <div class="col ms-5">
-                                        Vídeos Marcelo:
-                                        <p>
-                                            <a href="https://drive.google.com/file/d/1QZClbNjXocjy-5HPRso1TGaiNaD-91DI/view?usp=sharing">
-                                                output_from_web_cam.mp4
-                                            </a>
-                                            <a href="https://drive.google.com/file/d/12leABjHLr_4HTxrW-y65HC1Bxv5O03U_/view?usp=sharing">
-                                                output_video_from_web_cam_object
-                                            </a>
-                                        </p>
-                                    </div>
-                                    <div class="col ms-5">
-                                        Vídeos Gabriel:
-                                        <p>
-                                            <a href="https://alunoufabcedu-my.sharepoint.com/:v:/g/personal/monteiro_g_aluno_ufabc_edu_br/ERD20Ky8PaBHp_nncUBVTHUBfBrQHDe27cjFmtFphD99Wg?e=Hnsf2M">
-                                                output_video_from_web_cam.avi
-                                            </a>
-                                            <a href="https://alunoufabcedu-my.sharepoint.com/:v:/g/personal/monteiro_g_aluno_ufabc_edu_br/EXtwLW6TA61Jg8I1XIGBZ_QB8D2w8dHo5jTNVAR3ImuECw?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D&e=uxyHyU">
-                                                output_video_from_web_cam_fast 2.avi
-                                            </a>
-                                        </p>
-                                    </div>
-                                </div>
+                        
                             </div>
                         </div>
                     </div>
@@ -359,44 +329,57 @@
                         <div class="results-section mb-4">
                             <h4 class="h5 mb-3">4.1 Resultados Obtidos</h4>
                             <div class="row g-4">
-                                <!-- Resultado 1 -->
+                                <!-- Resultado 1 - Detecção Multicolorida -->
                                 <div class="col-md-6">
                                     <div class="card h-100">
                                         <div class="card-header bg-success text-white">
-                                            <i class="bi bi-file-play"></i> Leitura de vídeos locais
+                                            <i class="bi bi-palette"></i> Detecção Multicolorida
                                         </div>
                                         <div class="card-body">
                                             <p class="card-text">
-                                                Foi possível reproduzir vídeos e extrair informações como FPS e número de quadros.
+                                                O sistema conseguiu detectar e rastrear com sucesso objetos de diferentes cores simultaneamente, com boa precisão na segmentação das cores alvo.
                                             </p>
                                         </div>
                                     </div>
                                 </div>
 
+                                <!-- Resultado 2 - Interface Interativa -->
+                                <div class="col-md-6">
+                                    <div class="card h-100">
+                                        <div class="card-header bg-primary text-white">
+                                            <i class="bi bi-sliders"></i> Controle Adaptativo
+                                        </div>
+                                        <div class="card-body">
+                                            <p class="card-text">
+                                                As trackbars permitiram ajuste fino dos parâmetros HSV em tempo real, facilitando a calibração para diferentes condições de iluminação.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
 
-                                <!-- Resultado 3 -->
+                                <!-- Resultado 3 - Captura e Gravação -->
                                 <div class="col-md-6">
                                     <div class="card h-100">
                                         <div class="card-header bg-info text-white">
-                                            <i class="bi bi-save"></i> Gravação
+                                            <i class="bi bi-camera-reels"></i> Sistema de Gravação
                                         </div>
                                         <div class="card-body">
                                             <p class="card-text">
-                                                O vídeo capturado foi salvo no formato .avi, com qualidade satisfatória e sincronização estável entre captura e gravação.
+                                                Implementação bem-sucedida do sistema de captura de frames e gravação de vídeos, com organização automática por timestamp e separação entre original e processado.
                                             </p>
                                         </div>
                                     </div>
                                 </div>
 
-                                <!-- Resultado 4 -->
+                                <!-- Resultado 4 - Performance -->
                                 <div class="col-md-6">
                                     <div class="card h-100">
                                         <div class="card-header bg-warning">
-                                            <i class="bi bi-images"></i> Sequência de imagens
+                                            <i class="bi bi-speedometer2"></i> Performance
                                         </div>
                                         <div class="card-body">
                                             <p class="card-text">
-                                                O processamento ocorreu sem perdas visuais perceptíveis, demonstrando que o OpenCV trata sequências de imagens de forma eficiente.
+                                                O sistema manteve bom desempenho mesmo com múltiplas janelas e processamento em tempo real, demonstrando eficiência na implementação.
                                             </p>
                                         </div>
                                     </div>
@@ -446,8 +429,13 @@
                         <!-- Introdução da Conclusão -->
                         <div class="conclusion-intro mb-4">
                             <p class="lead">
-                                O experimento permitiu compreender de forma prática os fundamentos da captura,
-                                exibição e gravação de imagens e vídeos com OpenCV.
+                                O desenvolvimento do sistema de detecção multicolorida demonstrou com sucesso a aplicação prática
+                                de técnicas avançadas de processamento de imagem e visão computacional usando OpenCV.
+                            </p>
+                            <p>
+                                O sistema alcançou seus objetivos principais de detectar e rastrear múltiplos objetos coloridos
+                                simultaneamente, oferecendo uma interface interativa para ajuste fino dos parâmetros e
+                                funcionalidades robustas de gravação e análise.
                             </p>
                         </div>
 
