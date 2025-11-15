@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Etapa 2 - Modelagem Funcional do sistema (MF)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#f7f9fb;
+      --card:#ffffff;
+      --muted:#666972;
+      --accent:#0b7ed8;
+      --border:rgba(11,126,216,0.12);
+      --maxw:980px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; background:var(--bg); color:#1b1f23}
+    .wrap{max-width:var(--maxw);margin:36px auto;padding:28px}
+    header{display:flex;gap:16px;align-items:baseline}
+    .title{font-family:'PT Serif', serif;font-size:28px;font-weight:700;margin:0}
+    .subtitle{color:var(--muted);margin:0;font-size:14px}
+    .card{background:var(--card);padding:22px;border-radius:14px;box-shadow:0 6px 18px rgba(17,24,39,0.06);border:1px solid var(--border);margin-top:20px}
+    h2{font-family:'PT Serif',serif;color:#0f1724;margin:6px 0 12px;font-size:20px}
+    p{line-height:1.55;margin:10px 0;color:#222}
+    ul{margin:6px 0 12px 18px}
+    .section-meta{display:flex;gap:14px;flex-wrap:wrap}
+    .pill{background:#eef6ff;color:var(--accent);padding:6px 10px;border-radius:999px;font-weight:600;font-size:13px}
+    .flowchart{margin:18px 0;padding:14px;border-radius:10px;background:linear-gradient(180deg,#fbfdff, #ffffff);border:1px dashed rgba(11,126,216,0.06)}
+    .flowchart svg{width:100%;height:auto}
+    footer{margin-top:26px;color:var(--muted);font-size:13px}
+    /* preserve document-like spacing and serif body for main text blocks */
+    .doc-body{font-family:Inter, 'PT Serif', serif;background:transparent}
+    .monos{font-family:monospace;font-size:13px;background:#f4f6f8;padding:8px;border-radius:6px;display:inline-block}
+    @media (max-width:700px){.wrap{padding:18px}.title{font-size:20px}}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header>
+      <div>
+        <h1 class="title">Etapa 2 - Modelagem Funcional do sistema (MF)</h1>
+        <p class="subtitle">Documento convertido para web — Projeto: Detector de Trânsito e Enchentes</p>
+      </div>
+      <div style="margin-left:auto" class="section-meta">
+        <div class="pill">Versão web</div>
+        <div class="pill">PDF → HTML</div>
+      </div>
+    </header>
+
+    <article class="card doc-body">
+      <h2>Resumo</h2>
+      <p>Nesta etapa detalharemos o cenário e a aplicação do projeto, assim como seus objetivos e funcionalidades.</p>
+
+      <h2>Projeto</h2>
+      <p><strong>Detector de Trânsito e Enchentes</strong></p>
+
+      <h2>1. Problema Geral</h2>
+      <p>
+        Vivemos em um contexto no qual presenciamos alto tráfego de veículos nas avenidas ao redor da Universidade Federal do ABC, causando trânsito e grande transtorno para os discentes e docentes da universidade. Além deste fato, também observamos enchentes em temporadas de grande densidade de chuva, inviabilizando a presença nas aulas. Neste cenário, o sistema proposto busca a utilização de câmeras públicas na cidade de <strong>SANTO ANDRÉ - SP</strong> para detectar em tempo real as condições de tráfego e enchentes ao redor da universidade.
+      </p>
+
+      <h2>2. Objetivo Geral</h2>
+      <p>Fornecer para os associados da Universidade informações rápidas e precisas a respeito dos temas tratados, assim como possibilitar a melhora da segurança nos entornos da Federal do ABC.</p>
+
+      <h2>3. Conceito Funcional do Sistema</h2>
+
+      <h3>3.1 Captura de Imagem</h3>
+      <ul>
+        <li><strong>Entrada:</strong> Vídeo da câmera de segurança de Santo André (ou de qualquer lugar com muito trânsito);</li>
+        <li><strong>Processamento:</strong> captação do frames;</li>
+        <li><strong>Saída:</strong> frames das câmeras de segurança;</li>
+      </ul>
+
+      <h3>3.2 Pré Processamento</h3>
+      <ul>
+        <li><strong>Entrada:</strong> Frames das câmeras de segurança;</li>
+        <li><strong>Pré-processamento:</strong> Processamento de cores - HSV, grayscale;<br>
+            Equalização - histograma, gaussian;<br>
+            Filtragem de imagem (realce);<br>
+            Subtração de fundo + ROI;</li>
+        <li><strong>Saída:</strong> Frames pré processadas;</li>
+      </ul>
+
+      <h3>3.3 Processamento</h3>
+      <ul>
+        <li><strong>Entrada:</strong> Frames pré processadas;</li>
+        <li><strong>Processamento:</strong> Modelo de detecção de veículos;<br>
+            Cálculo de densidade de veículos;<br>
+            Armazenamento do resultado (salvamento em arquivo);<br>
+            Geração dos resultados baseado no frame anterior;</li>
+        <li><strong>Saída:</strong> Resultados do programa;</li>
+      </ul>
+
+      <h2>4. Fluxograma</h2>
+      <img src="fluxograma.png" alt="Fluxograma" style="max-width:100%; margin:20px 0;">
+
+      <h2>5. Tecnologias previstas</h2>
+      <ul>
+        <li><strong>Linguagem de Programação:</strong> C</li>
+        <li><strong>Bibliotecas:</strong> OpenCV</li>
+        <li><strong>Dispositivo de Entrada:</strong> Câmeras de segurança</li>
+        <li><strong>Dispositivo de Saída:</strong> Tela do computador</li>
+      </ul>
+
+      <h2>6. Resultado Esperado</h2>
+      <p>Esperamos que com a implementação deste projeto a comunidade da Universidade Federal do ABC obtenha melhores informações e feedback a respeito das questões de trânsito e enchentes ao redor da faculdade.</p>
+
+      <footer>
+
+      </footer>
+    </article>
+
+  </main>
+</body>
+</html>
