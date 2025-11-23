@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Relatório Lab 6 - Processamento de Vídeo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+</head>
+<body class="bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <i class="bi bi-arrow-left"></i> Voltar
+            </a>
+        </div>
+    </nav>
+
+    <div class="container py-4">
+        <header class="text-center mb-5">
+            <h1 class="display-4">Relatório Laboratório 6</h1>
+            <p class="lead text-muted">Processamento de Vídeo</p>
+        </header>
+
+<header class="text-center mb-5">
+  <h1 class="display-4">Relatório Laboratório 6</h1>
+  <p class="lead text-muted">Processamento de Vídeo - Detecção de Features (SURF)</p>
+</header>
+
+<section class="mb-5">
+  <h2 class="h3 mb-3">1. Introdução</h2>
+  <div class="card"><div class="card-body">
+    <p>Este relatório documenta o Laboratório 6 da disciplina de Processamento de Vídeo. O foco foi o estudo e aplicação de <b>detecção de características (features)</b> usando o módulo <code>xfeatures2d</code> do OpenCV (algoritmo SURF) em dois cenários: imagem estática e fluxo de vídeo em tempo real (webcam).</p>
+    <p>Foram desenvolvidos dois programas: (Parte 1) leitura de imagem, detecção e salvamento da saída; (Parte 2) captura contínua da webcam com detecção e visualização simultânea dos keypoints.</p>
+    <p>Os resultados servem como base para futuras aplicações de rastreamento, reconhecimento e análise de movimento.</p>
+  </div></div>
+</section>
+
+<section class="mb-5">
+  <h2 class="h3 mb-3">2. Fundamentos Básicos</h2>
+  <div class="card"><div class="card-body">
+    <h4 class="h5 mt-3">2.1 Features e Keypoints</h4>
+    <p>Features são pontos de interesse (cantos, blobs, regiões de contraste) que podem ser detectados de forma estável sob variações de iluminação e escala. Cada ponto é descrito por um vetor (descritor) para comparação entre imagens.</p>
+    <h4 class="h5 mt-3">2.2 SURF</h4>
+    <p>SURF (Speeded-Up Robust Features) usa aproximações com integrais de área para acelerar a detecção de blobs via determinante da matriz Hessiana. Parâmetro principal: <code>minHessian</code> (controle de sensibilidade; menor → mais keypoints).</p>
+    <h4 class="h5 mt-3">2.3 Fluxo de E/S</h4>
+    <ul>
+      <li>Entrada: imagem (Parte 1) ou frames da webcam (Parte 2).</li>
+      <li>Processamento: <code>SURF::create()</code> + <code>detect()</code> + <code>drawKeypoints()</code>.</li>
+      <li>Saída: exibição em janela e arquivo de imagem (Parte 1) ou visualização contínua (Parte 2).</li>
+    </ul>
+    <h4 class="h5 mt-3">2.4 Considerações de Desempenho</h4>
+    <p>No fluxo em tempo real o número de keypoints impacta a latência. Ajustes possíveis: reduzir resolução, diminuir <code>minHessian</code>, trocar para ORB (mais leve).</p>
+  </div></div>
+</section>
+
+<section class="mb-5">
+  <h2 class="h3 mb-3">3. Materiais e Métodos</h2>
+  <div class="card"><div class="card-body">
+    <h4 class="h5">3.1 Ambiente</h4>
+    <ul>
+      <li>SO: Linux (Debian).</li>
+      <li>Compilação: CMake + g++ (ver [`lab6/Parte1/CMakeLists.txt`](lab6/Parte1/CMakeLists.txt)).</li>
+      <li>Bibliotecas: OpenCV + opencv_contrib (necessário para SURF).</li>
+    </ul>
+    <h4 class="h5 mt-3">3.2 Arquivos Fonte</h4>
+    <ul>
+      <li>Parte 1: – leitura de imagem e escrita de saída com keypoints.</li>
+      <li>Parte 2: – captura da webcam, detecção contínua.</li>
+    </ul>
+    <h4 class="h5 mt-3">3.3 Procedimentos</h4>
+    <ol>
+      <li>Compilar com <code>cmake</code> e <code>make</code>.</li>
+      <li>Executar Parte 1: <code>./6PT1 imagem.jpg</code>.</li>
+      <li>Executar Parte 2: <code>./6PT2</code> (abre webcam).</li>
+      <li>Observar keypoints e ajustar <code>minHessian</code> se necessário.</li>
+    </ol>
+    <h4 class="h5 mt-3">3.4 Observação de Código</h4>
+    <ul>
+      <li>Uso de <code>drawKeypoints()</code> para visualização.</li>
+      <li>Em Parte 2 a variável <code>source</code> é definida mas a abertura usa <code>cap.open(0)</code> (pode ser ajustado para usar URL).</li>
+    </ul>
+  </div></div>
+</section>
+
+<section class="mb-5">
+  <h2 class="h3 mb-3">4. Resultados e Análises</h2>
+  <div class="card"><div class="card-body">
+    <h4 class="h5">4.1 Resultados</h4>
+    <ul>
+      <li>Parte 1: imagem processada salva com sobreposição de keypoints (arquivo prefixado <code>SURF_</code>).</li>
+      <div class="d-flex gap-3">
+                                        <div class="row justify-content-center">
+                                            Imagem Original
+                                            <img src="./imagens/grupo.jpg" title="Imagem Original" alt="">
+                                        </div>
+
+                                        <div class="row justify-content-center">
+                                            Imagem com Keypoints SURF
+                                            <img src="./imagens/SURF_grupo.png" title="Imagem com Keypoints SURF" alt="">
+                                        </div>
+    </ul>
+    <ul>
+      <li>Parte 2: fluxo com duas janelas (frame original + keypoints) exibido em tempo real.</li>
+      <div class="d-flex gap-3">
+                                        <div class="row justify-content-center">
+                                            Video usando a webcam
+                                            <video src="./videos/recording.mp4" title="Video de uma das janelas" alt="" type="video/mp4" controls></video>
+                                        </div>
+    </ul>
+    <h4 class="h5 mt-3">4.2 Análise</h4>
+    <ul>
+      <li>Quantidade de keypoints controlada via <code>minHessian</code>.</li>
+      <li>Latência aceitável para resolução padrão da webcam, porem pode aumentar com resoluções maiores (1920x1080).</li>
+      <li>SURF requer módulo contrib e xfeatures2d; dependência confirmada.</li>
+      <li>Possível expansão para matching entre frames ou tracking.</li>
+  </div></div>
+</section>
+
+<section class="mb-5">
+  <h2 class="h3 mb-3">5. Conclusões</h2>
+  <div class="card"><div class="card-body">
+    <p>O laboratório consolidou o uso de features SURF em contexto estático e dinâmico. A arquitetura de E/S foi aplicada de forma clara e modular.</p>
+    <p>Próximos passos incluem integração com ORB/SIFT para comparação, extração de descritores e matching, além de otimizações de performance.</p>
+    <h4 class="h6 mt-3">Aplicações Futuras</h4>
+    <ul>
+      <li>Reconhecimento de objetos baseado em keypoints.</li>
+      <li>Registro e alinhamento de imagens.</li>
+      <li>Rastreamento multi-frame.</li>
+    </ul>
+  </div></div>
+</section>
