@@ -174,15 +174,6 @@ for (x,y,w,h) in faces:
                         <p><strong>Segunda Parte:</strong> Adaptação do código para captura via webcam, detecção em tempo real e salvamento de frame ao pressionar tecla.</p>
                         <p>Parâmetros calibrados: <code>scaleFactor</code>, <code>minNeighbors</code>, e verificação de retornos para robustez.</p>
                     </div>
-                    <h4 class="h5 mt-4">3.3 Estrutura do Código</h4>
-                    <ul>
-                        <li>Carregamento dos cascades XML</li>
-                        <li>Conversão BGR &rarr; GRAY</li>
-                        <li><code>detectMultiScale</code> para rostos e subsequente para olhos na ROI</li>
-                        <li>Desenho de retângulos e exibição</li>
-                        <li>Captura condicional de imagem (ex.: tecla 's')</li>
-                        <li>Liberação de recursos (<code>release()</code>)</li>
-                    </ul>
                 </div>
             </div>
         </section>
@@ -193,17 +184,54 @@ for (x,y,w,h) in faces:
             <div class="card">
                 <div class="card-body">
                     <h4 class="h5">4.1 Resultados Obtidos</h4>
-                    <p>Na etapa de imagens estáticas, rostos foram detectados com alta taxa de acerto; pequenos ajustes de <code>minNeighbors</code> reduziram falsos positivos. Olhos foram identificados consistentemente em regiões bem iluminadas.</p>
-                    <p>Na etapa em tempo real, a detecção manteve estabilidade em resolução padrão (640x480) com latência baixa. Variações bruscas de iluminação afetaram olhos mais que rostos.</p>
-                    <h4 class="h5 mt-4">4.2 Análise</h4>
+                    <p>Para a primeira parte, temos abaixo os resultados obtidos ao rodar o código desenvolvido para a leitura e aplicação do filtro Haar cascade em uma imagem fixa:</p>
+                    <div class="row mb-3">
+                                        <div class="col-md-6 text-center">
+                                            Imagem Original
+                                            <img class="img-fluid mb-2 limited" src="./imagens/igorwebcam.jpg" title="Imagem Original" alt="">
+                                        </div>
+
+                                        <div class="col-md-6 text-center">
+                                            Imagem com filtro Haar
+                                            <img class="img-fluid mb-2 limited" src="./imagens/resultadoigorwebcam.jpg" title="Imagem com filtro Haar" alt="">
+                                        </div>
+                    </ul>
+                    <p>Abaixo, temos outro exemplo:</p>
+                                        <div class="row mb-3">
+                                        <div class="col-md-6 text-center">
+                                            Imagem Original
+                                            <img class="img-fluid mb-2 limited" src="./imagens/gabrielwebcam.jpg" title="Imagem Original" alt="">
+                                        </div>
+
+                                        <div class="col-md-6 text-center">
+                                            Imagem com filtro Haar
+                                            <img class="img-fluid mb-2 limited" src="./imagens/resultadogabrielwebcam.jpg" title="Imagem com filtro Haar" alt="">
+                                        </div>
+                                        <div class="col-md-6 text-center">
+                                            Imagem Original
+                                            <img class="img-fluid mb-2 limited" src="./imagens/fotogrupo2.jpg" title="Imagem Original" alt="">
+                                        </div>
+
+                                        <div class="col-md-6 text-center">
+                                            Imagem com filtro Haar
+                                            <img class="img-fluid mb-2 limited" src="./imagens/resultadogrupo.jpg" title="Imagem com filtro Haar" alt="">
+                                        </div>
+                                    </div>
+                                
+                    </ul>
+                    <p>Já para a segunda parte, executamos o programa a fim de capturar uma imagem em tempo real através da webcam e aplicar o filtro instantaneamente. Abaixo, temos o resultado para esta parte:</p>  
+                    <div class="col-md-6 text-center">
+                                            Imagem com filtro Haar
+                                            <img class="img-fluid mb-2 limited" src="./imagens/captura_resultado.jpg" title="Imagem com filtro Haar" alt="">
+                                        </div>
+                    </div>
+                    <h4 class="h5 mt-4">4.2 Análise</h4>   
                     <ul>
                         <li>Ajuste de <code>scaleFactor</code> impacta sensibilidade vs. velocidade.</li>
                         <li><code>minNeighbors</code> mais alto reduz falsos positivos (especialmente olhos).</li>
                         <li>Conversão para escala de cinza é obrigatória para acelerar o matching das features.</li>
                         <li>Modelos pré-treinados evitam custo de treinamento próprio.</li>
                     </ul>
-                </div>
-            </div>
         </section>
 
         <!-- 5. Conclusões -->
